@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TIR-KG-mXC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LoginVC-->
+        <scene sceneID="hUn-v8-uUw">
+            <objects>
+                <viewController id="TIR-KG-mXC" customClass="LoginVC" customModule="programele" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6oE-yz-gsj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1hm-xg-0LK">
+                                <rect key="frame" x="20" y="124" width="374" height="290.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sveiki, Prisijunkite!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWf-YF-weF">
+                                        <rect key="frame" x="113.5" y="0.0" width="147" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5hE-X3-gID">
+                                        <rect key="frame" x="0.0" y="40.5" width="374" height="160"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pašto adresas" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCb-NC-Ohr">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="ssI-lX-lcD"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Slaptažodis" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eIs-7e-IoM">
+                                                <rect key="frame" x="0.0" y="90" width="374" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="gE7-EB-P5Z"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWc-Xu-HcF">
+                                        <rect key="frame" x="0.0" y="220.5" width="374" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="c5P-Kd-EHr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Gerai">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5hE-X3-gID" secondAttribute="trailing" id="45F-th-CDK"/>
+                                    <constraint firstItem="uWc-Xu-HcF" firstAttribute="leading" secondItem="1hm-xg-0LK" secondAttribute="leading" id="9e5-qo-lIB"/>
+                                    <constraint firstItem="5hE-X3-gID" firstAttribute="leading" secondItem="1hm-xg-0LK" secondAttribute="leading" id="QGG-dS-KYc"/>
+                                    <constraint firstAttribute="trailing" secondItem="uWc-Xu-HcF" secondAttribute="trailing" id="lzq-sj-zKQ"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vem-Js-OnF">
+                                <rect key="frame" x="275" y="74" width="119" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Registracija " image="arrowshape.turn.up.backward.fill" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SWq-9j-20m"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="1hm-xg-0LK" firstAttribute="top" secondItem="Vem-Js-OnF" secondAttribute="top" constant="50" id="Jgn-0H-wTC"/>
+                            <constraint firstItem="Vem-Js-OnF" firstAttribute="top" secondItem="SWq-9j-20m" secondAttribute="top" constant="30" id="U5r-Ul-yEE"/>
+                            <constraint firstItem="SWq-9j-20m" firstAttribute="trailing" secondItem="Vem-Js-OnF" secondAttribute="trailing" constant="20" id="rI9-2z-LPH"/>
+                            <constraint firstItem="1hm-xg-0LK" firstAttribute="leading" secondItem="SWq-9j-20m" secondAttribute="leading" constant="20" id="uKH-gY-0Y2"/>
+                            <constraint firstItem="SWq-9j-20m" firstAttribute="trailing" secondItem="1hm-xg-0LK" secondAttribute="trailing" constant="20" id="z8U-mT-bOf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="email" destination="wCb-NC-Ohr" id="Wk5-k5-bJw"/>
+                        <outlet property="mainView" destination="6oE-yz-gsj" id="COk-o4-Z0Z"/>
+                        <outlet property="okButton" destination="uWc-Xu-HcF" id="gec-Ra-Ixn"/>
+                        <outlet property="password" destination="eIs-7e-IoM" id="4nL-b2-Qkh"/>
+                        <outlet property="register" destination="Vem-Js-OnF" id="dcC-sa-S8Q"/>
+                        <segue destination="DP6-Ma-nX8" kind="show" identifier="LoginVC" id="hiL-Y4-Ixs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="edE-Ef-GDW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="78"/>
+        </scene>
+        <!--Email VerificationVC-->
+        <scene sceneID="nmY-Kv-ZK1">
+            <objects>
+                <viewController id="DP6-Ma-nX8" customClass="EmailVerificationVC" customModule="programele" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V6o-Zc-Ct0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8Rl-kd-IBL">
+                                <rect key="frame" x="20" y="50" width="374" height="200.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sveiki, Registruokitės!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10u-7l-XxN">
+                                        <rect key="frame" x="100" y="0.0" width="174" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Įveskite savo pašto adresą" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-bF-3JH">
+                                        <rect key="frame" x="0.0" y="40.5" width="374" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="dIm-LQ-y6r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mkr-PF-Gfi">
+                                        <rect key="frame" x="0.0" y="130.5" width="374" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Bzn-VL-ihe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Gerai">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Mkr-PF-Gfi" firstAttribute="leading" secondItem="8Rl-kd-IBL" secondAttribute="leading" id="3zT-lb-3Xu"/>
+                                    <constraint firstItem="Awd-bF-3JH" firstAttribute="leading" secondItem="8Rl-kd-IBL" secondAttribute="leading" id="NpE-Bs-Ca3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Awd-bF-3JH" secondAttribute="trailing" id="RXp-nP-fjf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mkr-PF-Gfi" secondAttribute="trailing" id="V0R-7A-pwl"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mkr-PF-Gfi" secondAttribute="bottom" id="e1p-Rj-GuU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fDE-LB-pbF"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="8Rl-kd-IBL" firstAttribute="top" secondItem="fDE-LB-pbF" secondAttribute="top" constant="50" id="7VM-kI-ffM"/>
+                            <constraint firstItem="fDE-LB-pbF" firstAttribute="trailing" secondItem="8Rl-kd-IBL" secondAttribute="trailing" constant="20" id="Q79-1u-55O"/>
+                            <constraint firstItem="8Rl-kd-IBL" firstAttribute="leading" secondItem="fDE-LB-pbF" secondAttribute="leading" constant="20" id="ekH-kj-fCB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tq2-uX-EMS"/>
+                    <connections>
+                        <outlet property="email" destination="Awd-bF-3JH" id="B3T-tG-Dvx"/>
+                        <outlet property="mainView" destination="V6o-Zc-Ct0" id="hPc-bh-OLK"/>
+                        <outlet property="okButton" destination="Mkr-PF-Gfi" id="uY1-Ms-hf7"/>
+                        <segue destination="aHQ-IF-1jF" kind="show" identifier="SignUpVC" id="Qjj-tq-92G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXw-TX-Xxu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="781" y="78"/>
+        </scene>
+        <!--Sign UpVC-->
+        <scene sceneID="hjV-Sn-Zzr">
+            <objects>
+                <viewController id="aHQ-IF-1jF" customClass="SignUpVC" customModule="programele" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lzf-Jx-vOF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-cU-KxC">
+                                <rect key="frame" x="20" y="50" width="374" height="310"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vardas ir Pavardė" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMD-Zd-rFm">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="eXH-Y2-lgi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Slaptažodis" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D60-Q2-OFZ">
+                                        <rect key="frame" x="0.0" y="80" width="374" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Yp8-2k-EkR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pakartoti slaptažodį" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ul-ck-gIi">
+                                        <rect key="frame" x="0.0" y="160" width="374" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Tfm-Zq-yEH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vr-78-TOy">
+                                        <rect key="frame" x="0.0" y="240" width="374" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="41W-jO-0n7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Gerai">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="CMD-Zd-rFm" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="9hG-js-Lah"/>
+                                    <constraint firstItem="CMD-Zd-rFm" firstAttribute="top" secondItem="cmZ-cU-KxC" secondAttribute="top" id="9sa-AN-0mD"/>
+                                    <constraint firstAttribute="trailing" secondItem="D60-Q2-OFZ" secondAttribute="trailing" id="AiM-Ge-gCX"/>
+                                    <constraint firstItem="6vr-78-TOy" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="LEY-Xg-S1z"/>
+                                    <constraint firstItem="D60-Q2-OFZ" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="PZD-Sz-QiO"/>
+                                    <constraint firstAttribute="trailing" secondItem="6vr-78-TOy" secondAttribute="trailing" id="TCG-fp-Wu5"/>
+                                    <constraint firstAttribute="bottom" secondItem="6vr-78-TOy" secondAttribute="bottom" id="mR5-Gc-NUI"/>
+                                    <constraint firstAttribute="trailing" secondItem="CMD-Zd-rFm" secondAttribute="trailing" id="wl8-Ju-Vch"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IZa-gC-Okp"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="cmZ-cU-KxC" firstAttribute="leading" secondItem="IZa-gC-Okp" secondAttribute="leading" constant="20" id="WRz-rQ-r9P"/>
+                            <constraint firstItem="IZa-gC-Okp" firstAttribute="trailing" secondItem="cmZ-cU-KxC" secondAttribute="trailing" constant="20" id="Wli-K6-n72"/>
+                            <constraint firstItem="cmZ-cU-KxC" firstAttribute="top" secondItem="IZa-gC-Okp" secondAttribute="top" constant="50" id="ZiS-ak-jTT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="47s-mQ-5Tg"/>
+                    <connections>
+                        <outlet property="mainView" destination="lzf-Jx-vOF" id="hfX-PA-jDN"/>
+                        <outlet property="nameSurname" destination="CMD-Zd-rFm" id="FUF-kv-jfH"/>
+                        <outlet property="okButton" destination="6vr-78-TOy" id="Me2-FM-m4f"/>
+                        <outlet property="password" destination="D60-Q2-OFZ" id="HV7-Kf-Ik4"/>
+                        <outlet property="passwordSecond" destination="6ul-ck-gIi" id="BLy-lA-V8h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ry-Id-ALF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1515.9420289855075" y="77.678571428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
