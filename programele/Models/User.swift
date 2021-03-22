@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
-struct User {
+struct User: Codable, DefaultsSerializable {
+
+    let id: Int
     let name: String
     let email: String
     let surname: String

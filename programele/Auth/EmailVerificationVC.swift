@@ -8,7 +8,7 @@
 import UIKit
 
 final class EmailVerificationVC: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet private var mainView: UIView!
     @IBOutlet private var email: UITextField!
     @IBOutlet private var okButton: UIButton!
@@ -31,8 +31,27 @@ final class EmailVerificationVC: UIViewController, UITextFieldDelegate {
         okButton.layer.cornerRadius = 20
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination as? SignUpVC)?.email = sender as? String
+    }
+    
     private func openSignUp() {
-        performSegue(withIdentifier: "SignUpVC", sender: nil)
+        let users = db.readUser()
+        guard let e = email.text, !e.isEmpty else {
+            alert(title: "Privalote užpildyti visus laukelius")
+            return }
+        
+        if users.isEmpty {
+            performSegue(withIdentifier: "SignUpVC", sender: e)
+        }
+        
+        users.forEach { user in
+            if e == user.email {
+                alert(title: "Pašto adresas jau egzistuoja")
+            } else {
+                performSegue(withIdentifier: "SignUpVC", sender: e)
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

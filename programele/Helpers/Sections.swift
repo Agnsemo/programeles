@@ -10,6 +10,7 @@ import RxSwift
 import UIKit
 import RxCocoa
 import RxDataSources
+import SwiftyUserDefaults
 
 
 var sections: Driver<[MultipleSectionModel]> {
@@ -19,19 +20,40 @@ var sections: Driver<[MultipleSectionModel]> {
     }
 }
 
+var userRelay = BehaviorRelay<User?>(value: nil)
+
 var headerSection: Driver<MultipleSectionModel> {
-    let header = SectionItem.header(user: User(name: "Agne", email: "agne040@gmail.com", surname: "Semonaviciute", password: "12345", secondPassword: "12345", userName: "agneagne123"))
-    let section = MultipleSectionModel.header(items: [header])
-    return Driver.just(section)
+    return userRelay
+        .asDriver()
+        .map { user in
+            guard let u = user else {
+                let section = MultipleSectionModel.header(items: [])
+                return section }
+            
+            let header = SectionItem.header(user: u)
+            let section = MultipleSectionModel.header(items: [header])
+            return section
+        }
 }
 
-var activitiesArray: [Activities] = [Activities(title: "antras", description: "Antradieniais - ketvirtadieniais 10.00-11.00 val. Treniruotės 3 - 5 žmonių grupėje. Individualus dėmesys ir motyvuojanti komanda. Trenerio palaikymas ir motyvacija Facebook grupėje. 8 kartai per mėnesį. Sportas gryname ore", image: UIImage(imageLiteralResourceName: "group2")), Activities(title: "pirmas", description: "Antradieniais - ketvirtadieniais 10.00-11.00 val. Treniruotės 3 - 5 žmonių grupėje. Individualus dėmesys ir motyvuojanti komanda. Trenerio palaikymas ir motyvacija Facebook grupėje. 8 kartai per mėnesį. Sportas gryname ore", image: UIImage(imageLiteralResourceName: "group2")), Activities(title: "pirmas", description: "Antradieniais - ketvirtadieniais 10.00-11.00 val. Treniruotės 3 - 5 žmonių grupėje. Individualus dėmesys ir motyvuojanti komanda. Trenerio palaikymas ir motyvacija Facebook grupėje. 8 kartai per mėnesį. Sportas gryname ore", image: UIImage(imageLiteralResourceName: "group3")), Activities(title: "pirmas", description: "Antradieniais - ketvirtadieniais 10.00-11.00 val. Treniruotės 3 - 5 žmonių grupėje. Individualus dėmesys ir motyvuojanti komanda. Trenerio palaikymas ir motyvacija Facebook grupėje. 8 kartai per mėnesį. Sportas gryname ore", image: UIImage(imageLiteralResourceName: "group1"))]
+//ACTIVITIES
+var activitiesRelay = BehaviorRelay<[Activities]>(value: [])
+var activitiesDriver: Driver<[Activities]>{
+    return activitiesRelay.asDriver()
+}
 
-var activitiesRelay = BehaviorRelay<[Activities]>(value: activitiesArray)
+func insertDataIntoDB() {
+    db.insertActivities(id: 0, title: "Groups", description: "Antradieniais - ketvirtadieniais 10.00-11.00 val. Treniruotės 3 - 5 žmonių grupėje. Individualus dėmesys ir motyvuojanti komanda. Trenerio palaikymas ir motyvacija Facebook grupėje. 8 kartai per mėnesį. Sportas gryname ore", image: "")
+}
+
+func updateActivities() {
+    let activitiesArray = db.readActivities()
+    activitiesRelay.accept(activitiesArray)
+}
 
 var activitiesSection: Driver<MultipleSectionModel> {
-    return activitiesRelay
-        .asDriver()
+    
+    return activitiesDriver
         .map { activities in
             var section = MultipleSectionModel.activities(items: [])
             let header = SectionItem.title(items: "Treniruotės")
@@ -44,11 +66,34 @@ var activitiesSection: Driver<MultipleSectionModel> {
         }
 }
 
-var locationRelay = BehaviorRelay<Location>(value: Location(name: "OZO G. 41", city: "Vilnius", workHours: "Nedirba"))
+//LOCATIONS
+
+var moreLocationsRelay = BehaviorRelay<[Location]>(value: [])
+var moreLocationsDriver: Driver<[Location]> {
+    return moreLocationsRelay.asDriver()
+}
+
+var locationRelay = BehaviorRelay<Location>(value: Location(id: 0, name: "OZO G. 41", city: "Vilnius", workHours: "Nedirba"))
+var locationDriver: Driver<Location> {
+    return locationRelay.asDriver()
+}
+
+func updateLocations() {
+    let moreLocationsArray = db.readLocation()
+    moreLocationsRelay.accept(moreLocationsArray)
+}
+
+func insertLocationTODB() {
+    db.insertLocation(id: 1, name: "VIENUOLIO G. 4", city: "Vilnius", workHours: "Nedirba")
+    db.insertLocation(id: 2, name: "SAVANORIŲ PR. 28", city: "Vilnius", workHours: "Nedirba")
+    db.insertLocation(id: 3, name: "VAIRO G. 2", city: "Šiauliai", workHours: "Nedirba")
+    db.insertLocation(id: 4, name: "LIEPŲ G. 53A", city: "Klaipėda", workHours: "Nedirba")
+    db.insertLocation(id: 5, name: "OZO G. 41", city: "Vilnius", workHours: "Nedirba")
+}
 
 var locationSection: Driver<MultipleSectionModel> {
-    return locationRelay
-        .asDriver()
+    
+    return locationDriver
         .map { loc in
             let header = SectionItem.title(items: "Vieta")
             let location = SectionItem.location(location: loc)
@@ -57,7 +102,3 @@ var locationSection: Driver<MultipleSectionModel> {
         }
 }
 
-var moreLocations: [Location] = [Location(name: "VIENUOLIO G. 4", city: "Vilnius", workHours: "Nedirba"),
-                                 Location(name: "SAVANORIŲ PR. 28", city: "Vilnius", workHours: "Nedirba"),
-                                 Location(name: "VAIRO G. 2", city: "Šiauliai", workHours: "Nedirba"),
-                                 Location(name: "LIEPŲ G. 53A", city: "Klaipėda", workHours: "Nedirba")]

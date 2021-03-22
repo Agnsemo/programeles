@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
-struct Location {
+struct Location: Codable, DefaultsSerializable {
+    let id: Int
     let name: String
     let city: String
     let workHours: String

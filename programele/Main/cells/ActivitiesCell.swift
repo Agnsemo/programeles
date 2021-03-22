@@ -18,7 +18,7 @@ final class ActivitiesCell: UITableViewCell {
   
     func setup(activities: Activities) {
         
-        backgroundImage.image = activities.image
+        //backgroundImage.image = activities.image
         title.text = activities.title
     }
 }

@@ -8,9 +8,10 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftyUserDefaults
 
 final class LoginVC: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet private var mainView: UIView!
     @IBOutlet private var email: UITextField!
     @IBOutlet private var password: UITextField!
@@ -24,7 +25,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         email.delegate = self
         password.delegate = self
         email.becomeFirstResponder()
-       
+        
         
         okButton.rx.tapDriver
             .drive(onNext: Weakly(self, LoginVC.openHome))
@@ -45,10 +46,26 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     private func openHome() {
-        let homieNav = HomeVC.createFrom(storyboard: "Main", identifier: "Main") as! UINavigationController
-        //(homieNav.topViewController as! HomeViewController).homeVM = HomeVM(user: user)
+        let users = db.readUser()
+        guard let e = email.text, !e.isEmpty, let p = password.text, !p.isEmpty else {
+            alert(title: "Privalote užpildyti visus laukelius")
+            return }
         
-        UIApplication.shared.windows.first?.rootViewController = homieNav
+        if users.isEmpty {
+            alert(title: "Neteisingas vartotojo paštas arba slaptažodis")
+        }
+        
+        users.forEach { user in
+            if e == user.email && p == user.password {
+                Defaults.user = user
+                let homieNav = HomeVC.createFrom(storyboard: "Main", identifier: "Main") as! UINavigationController
+                (homieNav.topViewController as! HomeVC).user = user
+                
+                UIApplication.shared.windows.first?.rootViewController = homieNav
+            } else {
+                alert(title: "Neteisingas vartotojo paštas arba slaptažodis")
+            }
+        }
     }
     
     private func openSignUp() {
@@ -56,7 +73,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -66,7 +83,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             password.resignFirstResponder()
             openHome()
         }
-
+        
         return false
     }
 }

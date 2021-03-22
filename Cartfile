@@ -1,2 +1,5 @@
 github "ReactiveX/RxSwift" "6.1.0"
 github "RxSwiftCommunity/RxDataSources" "4.0.1"
+github "radex/SwiftyUserDefaults" "5.0.0-beta.5"
+github "kishikawakatsumi/KeychainAccess" "v4.2.1"
+github "stephencelis/SQLite.swift" "0.12.0"

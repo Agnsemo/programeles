@@ -2,16 +2,15 @@
 //  Activities.swift
 //  programele
 //
-//  Created by Agne on 2021-03-10.
+//  Created by Agne on 2021-03-18.
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 import UIKit
 
 struct Activities {
+    let id: Int
     let title: String
     let description: String
-    let image: UIImage?
+    let image: String
 }

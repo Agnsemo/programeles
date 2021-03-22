@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class MoreLocationCell: UITableViewCell {
 
     @IBOutlet private var clubCity: UILabel!
     @IBOutlet private var clubName: UILabel!
-    @IBOutlet private var gpsButton: UIButton!
     @IBOutlet private var mainView: UIView!
+    @IBOutlet private var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +25,6 @@ final class MoreLocationCell: UITableViewCell {
     func setup(location: Location) {
         clubCity.text = location.city
         clubName.text = location.name
+        timeLabel.text = location.workHours
     }
 }

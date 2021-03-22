@@ -4,6 +4,10 @@ $(SRCROOT)/Carthage/Build/iOS/RxSwift.framework
 $(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework
 $(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework
 $(SRCROOT)/Carthage/Build/iOS/Differentiator.framework
+$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework
+$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework
+$(SRCROOT)/Carthage/Build/iOS/SQLite.framework
+
 
 
 

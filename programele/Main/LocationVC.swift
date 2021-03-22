@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CoreLocation
+import SwiftyUserDefaults
 
 final class LocationVC: UIViewController, UIScrollViewDelegate {
     
@@ -21,9 +23,9 @@ final class LocationVC: UIViewController, UIScrollViewDelegate {
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         
-        Observable.just(moreLocations)
-            .bind(to: tableView.rx.items(cellIdentifier: "MoreLocationCell", cellType: MoreLocationCell.self)) { (row, item, cell) in
-                cell.setup(location: item)
+        moreLocationsDriver
+            .drive(tableView.rx.items(cellIdentifier: "MoreLocationCell", cellType: MoreLocationCell.self)) { (row, item, cell) in
+                cell.setup(location: item)                
             }
             .disposed(by: disposeBag)
         
@@ -33,8 +35,12 @@ final class LocationVC: UIViewController, UIScrollViewDelegate {
             .disposed(by: disposeBag)
     }
     
-    func changeHomeLocation(location: Location) {
-        locationRelay.accept(location)
+    private func changeHomeLocation(location: Location) {
+        Defaults.location = location
+        
+        if let l = Defaults.location {
+            locationRelay.accept(l)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 }

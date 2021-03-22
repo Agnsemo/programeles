@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import SwiftyUserDefaults
+import SQLite3
 
 final class HomeVC: UIViewController {
     
@@ -16,9 +18,13 @@ final class HomeVC: UIViewController {
     @IBOutlet private var accountButton: UIButton!
     
     private let disposeBag = DisposeBag()
-
+    
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setup()
         
         let dataSource = HomeVC.dataSource()
         
@@ -36,19 +42,17 @@ final class HomeVC: UIViewController {
         accountButton.rx.tapDriver
             .drive(onNext: Weakly(self, HomeVC.openAccount))
         
-        setup()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as? ActivityDetailsVC)?.activity = sender as? Activities
     }
     
-    func openAccount() {
+    private func openAccount() {
         performSegue(withIdentifier: "AccountVC", sender: nil)
     }
     
-    func getActivity(sectionItem: SectionItem) {
+   private func getActivity(sectionItem: SectionItem) {
         switch sectionItem {
         case .activities(let activities):
             performSegue(withIdentifier: "ActivityDetailsVC", sender: activities)
@@ -61,10 +65,21 @@ final class HomeVC: UIViewController {
         }
     }
     
-    func setup() {
+    private func setup() {
         tableView.estimatedRowHeight = 50
         tableView.register(UINib(nibName: "TitleCell", bundle: nil), forCellReuseIdentifier: "TitleCell")
         tableView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
+        
+        userRelay.accept(user)
+        
+        if let location = Defaults.location {
+            locationRelay.accept(location)
+        }
+        
+        insertDataIntoDB()
+        updateActivities()
+        insertLocationTODB()
+        updateLocations()
     }
 }
 
@@ -84,7 +99,7 @@ extension HomeVC {
                 case .location(location: let location):
                     let cell: LocationCell = table.dequeueReusableCell(withIdentifier: "LocationCell") as! LocationCell
                     cell.setup(location: location)
-                   
+                    
                     return cell
                 case .title(items: let items):
                     let cell: TitleCell = table.dequeueReusableCell(withIdentifier: "TitleCell") as! TitleCell

@@ -20,7 +20,7 @@ final class ActivityDetailsVC: UIViewController {
         super.viewDidLoad()
         
         titleLabel.text = activity.title
-        imageView.image = activity.image
+        //imageView.image = activity.image
         descriptionLabel.text = activity.description
         mainView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
 
