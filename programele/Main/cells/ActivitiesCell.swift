@@ -14,11 +14,11 @@ final class ActivitiesCell: UITableViewCell {
     @IBOutlet private var backgroundImage: UIImageView!
     @IBOutlet private var title: UILabel!
     
-    private let disposeBag = DisposeBag()
-  
     func setup(activities: Activities) {
-        
-        //backgroundImage.image = activities.image
         title.text = activities.title
+        
+        guard let url = URL(string: activities.image) else { return }
+        backgroundImage.load(url: url)
+        backgroundImage.isHidden = false
     }
 }

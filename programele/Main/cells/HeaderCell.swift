@@ -11,7 +11,7 @@ final class HeaderCell: UITableViewCell {
 
     @IBOutlet private var heyLabel: UILabel!
     @IBOutlet private var userNameLabel: UILabel!
-    @IBOutlet private var mainView: UIView!
+    @IBOutlet private var mainView: UIView! 
     
     func setup(user: User) {
         heyLabel.text = "Sveiki!"

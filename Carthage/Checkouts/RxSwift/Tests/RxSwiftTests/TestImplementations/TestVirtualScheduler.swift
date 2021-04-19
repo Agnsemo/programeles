@@ -26,23 +26,23 @@ struct TestVirtualSchedulerVirtualTimeConverter : VirtualTimeConverterType {
     typealias VirtualTimeIntervalUnit = Int
 
     func convertFromVirtualTime(_ virtualTime: VirtualTimeUnit) -> RxTime {
-        Date(timeIntervalSince1970: Foundation.TimeInterval(virtualTime) * 10.0)
+        return Date(timeIntervalSince1970: Foundation.TimeInterval(virtualTime) * 10.0)
     }
 
     func convertToVirtualTime(_ time: RxTime) -> VirtualTimeUnit {
-        Int(time.timeIntervalSince1970 / 10.0)
+        return Int(time.timeIntervalSince1970 / 10.0)
     }
 
     func convertFromVirtualTimeInterval(_ virtualTimeInterval: VirtualTimeIntervalUnit) -> Foundation.TimeInterval {
-        Foundation.TimeInterval(virtualTimeInterval * 10)
+        return Foundation.TimeInterval(virtualTimeInterval * 10)
     }
 
     func convertToVirtualTimeInterval(_ timeInterval: Foundation.TimeInterval) -> VirtualTimeIntervalUnit {
-        Int(timeInterval / 10.0)
+        return Int(timeInterval / 10.0)
     }
 
     func offsetVirtualTime(_ time: VirtualTimeUnit, offset: VirtualTimeIntervalUnit) -> VirtualTimeUnit {
-        time + offset
+        return time + offset
     }
 
     func compareVirtualTime(_ lhs: VirtualTimeUnit, _ rhs: VirtualTimeUnit) -> VirtualTimeComparison {

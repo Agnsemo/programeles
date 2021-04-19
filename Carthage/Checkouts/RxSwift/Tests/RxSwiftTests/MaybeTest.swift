@@ -52,69 +52,6 @@ extension MaybeTest {
         XCTAssertEqual(events, [.error(testError)])
     }
 
-    func testMaybe_Subscription_onDisposed() {
-        // Given
-        let scheduler = TestScheduler(initialClock: 0)
-        let res = scheduler.createObserver(Int.self)
-        var observer: ((MaybeEvent<Int>) -> Void)!
-        var subscription: Disposable!
-        var onDisposesCalled = 0
-        // When
-        scheduler.scheduleAt(201) {
-            subscription = Maybe<Int>.create {
-                observer = $0
-                return Disposables.create()
-            }
-            .subscribe(onDisposed: { onDisposesCalled += 1 })
-        }
-        scheduler.scheduleAt(202) {
-            subscription.dispose()
-        }
-        scheduler.scheduleAt(203) {
-            observer(.error(testError))
-        }
-        scheduler.start()
-        // Then
-        XCTAssertTrue(res.events.isEmpty)
-        XCTAssertEqual(onDisposesCalled, 1)
-    }
-
-    func testMaybe_Subscription_onDisposed_success() {
-        // Given
-        let maybe = Maybe.just(1)
-        var onDisposedCalled = 0
-        // When
-        _ = maybe.subscribe(onDisposed: {
-            onDisposedCalled += 1
-        })
-        // Then
-        XCTAssertEqual(onDisposedCalled, 1)
-    }
-
-    func testMaybe_Subscription_onDisposed_completed() {
-        // Given
-        let maybe = Maybe<Int>.empty()
-        var onDisposedCalled = 0
-        // When
-        _ = maybe.subscribe(onDisposed: {
-            onDisposedCalled += 1
-        })
-        // Then
-        XCTAssertEqual(onDisposedCalled, 1)
-    }
-
-    func testMaybe_Subscription_onDisposed_error() {
-        // Given
-        let single = Maybe<Int>.error(testError)
-        var onDisposedCalled = 0
-        // When
-        _ = single.subscribe(onDisposed: {
-            onDisposedCalled += 1
-        })
-        // Then
-        XCTAssertEqual(onDisposedCalled, 1)
-    }
-
     func testMaybe_create_success() {
         let scheduler = TestScheduler(initialClock: 0)
 
@@ -141,7 +78,7 @@ extension MaybeTest {
                 return Disposables.create {
                     disposedTime = scheduler.clock
                 }
-            }
+                }.asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -178,7 +115,7 @@ extension MaybeTest {
                 return Disposables.create {
                     disposedTime = scheduler.clock
                 }
-            }
+                }.asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -211,7 +148,7 @@ extension MaybeTest {
                 return Disposables.create {
                     disposedTime = scheduler.clock
                 }
-            }
+                }.asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -298,7 +235,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe.just(1).delaySubscription(.seconds(2), scheduler: scheduler)
+            (Maybe.just(1).delaySubscription(.seconds(2), scheduler: scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -311,7 +248,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe.just(1).delay(.seconds(2), scheduler: scheduler)
+            (Maybe.just(1).delay(.seconds(2), scheduler: scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -324,7 +261,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe.just(1).observe(on:scheduler)
+            (Maybe.just(1).observeOn(scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -337,7 +274,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe.just(1).subscribe(on: scheduler)
+            (Maybe.just(1).subscribeOn(scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -350,7 +287,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe.error(testError).catch { _ in Maybe.just(2) }
+            (Maybe.error(testError).catchError { _ in Maybe.just(2) } as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -359,11 +296,11 @@ extension MaybeTest {
             ])
     }
 
-    func test_catchAndReturn() {
+    func test_catchErrorJustReturn() {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe.error(testError).catchAndReturn(2)
+            (Maybe.error(testError).catchErrorJustReturn(2) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -377,8 +314,8 @@ extension MaybeTest {
 
         var isFirst = true
         let res = scheduler.start {
-            Maybe.error(testError)
-                .catch { e in
+            (Maybe.error(testError)
+                .catchError { e in
                     defer {
                         isFirst = false
                     }
@@ -389,6 +326,7 @@ extension MaybeTest {
                     return Maybe.just(2)
                 }
                 .retry(2) as Maybe<Int>
+            ).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -402,8 +340,8 @@ extension MaybeTest {
 
         var isFirst = true
         let res = scheduler.start {
-            Maybe.error(testError)
-                .catch { e in
+            (Maybe.error(testError)
+                .catchError { e in
                     defer {
                         isFirst = false
                     }
@@ -413,9 +351,10 @@ extension MaybeTest {
 
                     return Maybe.just(2)
                 }
-                .retry { (e: Observable<Error>) in
+                .retryWhen { (e: Observable<Error>) in
                     return e
                 } as Maybe<Int>
+            ).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -429,8 +368,8 @@ extension MaybeTest {
 
         var isFirst = true
         let res = scheduler.start {
-            Maybe.error(testError)
-                .catch { e in
+            (Maybe.error(testError)
+                .catchError { e in
                     defer {
                         isFirst = false
                     }
@@ -440,9 +379,10 @@ extension MaybeTest {
 
                     return Maybe.just(2)
                 }
-                .retry { e in
+                .retryWhen { (e: Observable<TestError>) in
                     return e
                 } as Maybe<Int>
+            ).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -455,7 +395,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe.just(1).debug()
+            (Maybe.just(1).debug() as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -487,7 +427,7 @@ extension MaybeTest {
                     .completed(100)
                     ])
                 return xs.asObservable().asMaybe()
-            })
+            }).asObservable()
         }
 
         XCTAssert(disposable === _d)
@@ -519,7 +459,7 @@ extension MaybeTest {
             ]).asMaybe()
 
         let res = scheduler.start {
-            xs.timeout(.seconds(5), scheduler: scheduler)
+            (xs.timeout(.seconds(5), scheduler: scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -541,7 +481,7 @@ extension MaybeTest {
         ]).asMaybe()
 
         let res = scheduler.start {
-            xs.timeout(.seconds(5), other: xs2, scheduler: scheduler)
+            (xs.timeout(.seconds(5), other: xs2, scheduler: scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -559,7 +499,7 @@ extension MaybeTest {
         ]).asMaybe()
 
         let res = scheduler.start {
-            xs.timeout(.seconds(30), scheduler: scheduler)
+            (xs.timeout(.seconds(30), scheduler: scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -582,7 +522,7 @@ extension MaybeTest {
         ]).asMaybe()
 
         let res = scheduler.start {
-            xs.timeout(.seconds(30), other: xs2, scheduler: scheduler)
+            (xs.timeout(.seconds(30), other: xs2, scheduler: scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -597,7 +537,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe<Int>.timer(.seconds(2), scheduler: scheduler)
+            (Maybe<Int>.timer(.seconds(2), scheduler: scheduler) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -612,7 +552,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe<Int>.just(1).do(onNext: { _ in () }, afterNext: { _ in () }, onError: { _ in () }, afterError: { _ in }, onSubscribe: { () in () }, onSubscribed: { () in () }, onDispose: { () in () })
+            (Maybe<Int>.just(1).do(onNext: { _ in () }, afterNext: { _ in () }, onError: { _ in () }, afterError: { _ in }, onSubscribe: { () in () }, onSubscribed: { () in () }, onDispose: { () in () }) as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -625,7 +565,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe<Int>.just(1).filter { _ in false }
+            (Maybe<Int>.just(1).filter { _ in false } as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -637,7 +577,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe<Int>.just(1).map { $0 * 2 }
+            (Maybe<Int>.just(1).map { $0 * 2 } as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -675,7 +615,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe<Int>.just(1).flatMap { .just($0 * 2) }
+            (Maybe<Int>.just(1).flatMap { .just($0 * 2) } as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -688,7 +628,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe<Int>.empty().ifEmpty(default: 5) as Single<Int>
+            ((Maybe<Int>.empty().ifEmpty(default: 5) as Single<Int>).asObservable())
         }
 
         XCTAssertEqual(res.events, [
@@ -703,7 +643,7 @@ extension MaybeTest {
         let switchSource = Maybe.just(10)
 
         let res = scheduler.start {
-            source.ifEmpty(switchTo: switchSource) as Maybe<Int>
+            ((source.ifEmpty(switchTo: switchSource) as Maybe<Int>).asObservable())
         }
 
         XCTAssertEqual(res.events, [
@@ -718,7 +658,7 @@ extension MaybeTest {
         let switchSource = Single.just(10)
 
         let res = scheduler.start {
-            source.ifEmpty(switchTo: switchSource)
+            ((source.ifEmpty(switchTo: switchSource) as Single<Int>).asObservable())
         }
 
         XCTAssertEqual(res.events, [
@@ -733,7 +673,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            (Maybe.zip(Maybe.just(1), Maybe.just(2)) as Maybe<(Int, Int)>).map { $0.0 + $0.1 }
+            (Maybe.zip(Maybe.just(1), Maybe.just(2)) as Maybe<(Int, Int)>).map { $0.0 + $0.1 }.asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -746,7 +686,7 @@ extension MaybeTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            Maybe.zip(Maybe.just(1), Maybe.just(2)) { $0 + $1 }
+            (Maybe.zip(Maybe.just(1), Maybe.just(2)) { $0 + $1 } as Maybe<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [

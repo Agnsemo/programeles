@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Norėdami pakeisti savo profilio nuotrauką, turėtumėte suteikti prieeigą prie savo kameros</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Norėdami pakeisti savo profilio nuotrauką, turėtumėte suteikti prieeigą prie savo nuotraukų galerijos</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

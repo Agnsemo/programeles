@@ -33,9 +33,9 @@ extension ExampleTests {
                         return .just([])
                     }
                     return searchGitHub(query)
-                        .catchAndReturn([])
+                        .catchErrorJustReturn([])
                 }
-                .observe(on:MainScheduler.instance)
+                .observeOn(MainScheduler.instance)
 
 
             return searchResults

@@ -23,7 +23,7 @@ private struct ActivityToken<E> : ObservableConvertibleType, Disposable {
     }
 
     func asObservable() -> Observable<E> {
-        _source
+        return _source
     }
 }
 
@@ -69,12 +69,12 @@ public class ActivityIndicator : SharedSequenceConvertibleType {
     }
 
     public func asSharedSequence() -> SharedSequence<SharingStrategy, Element> {
-        _loading
+        return _loading
     }
 }
 
 extension ObservableConvertibleType {
     public func trackActivity(_ activityIndicator: ActivityIndicator) -> Observable<Element> {
-        activityIndicator.trackActivityOfObservable(self)
+        return activityIndicator.trackActivityOfObservable(self)
     }
 }

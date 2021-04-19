@@ -646,15 +646,15 @@ IMPLEMENT_OBSERVING_CLASS_PAIR_FOR_TEST(all_supported_types)
 
 -(BOOL)isEqual:(Arguments *)object {
     if (object == self) {
-        YES;
+        return YES;
     }
 
     if (object == nil) {
-        NO;
+        return NO;
     }
 
     if ([self class] != [object class]) {
-        NO;
+        return NO;
     }
 
     return [self.values isEqualToArray:object.values];

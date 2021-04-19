@@ -37,10 +37,10 @@ final class NSTextFieldSubclass
     }
 
     var delegateProxy: DelegateProxy<NSTextField, NSTextFieldDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: NSTextFieldDelegate) -> Disposable {
-        RxTextFieldDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxTextFieldDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }

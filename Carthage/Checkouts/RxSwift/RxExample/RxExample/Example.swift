@@ -33,3 +33,13 @@ extension String {
         return numberFormatter.number(from: self)?.doubleValue
     }
 }
+
+func showAlert(_ message: String) {
+    #if os(iOS)
+        UIAlertView(title: "RxExample", message: message, delegate: nil, cancelButtonTitle: "OK").show()
+    #elseif os(macOS)
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.runModal()
+    #endif
+}

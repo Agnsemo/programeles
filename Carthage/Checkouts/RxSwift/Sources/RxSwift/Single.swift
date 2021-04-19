@@ -1,1 +1,1 @@
-../../RxSwift/Traits/PrimitiveSequence/Single.swift
+../../RxSwift/Traits/Single.swift

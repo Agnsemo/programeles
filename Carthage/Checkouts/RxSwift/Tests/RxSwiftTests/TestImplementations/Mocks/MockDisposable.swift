@@ -12,14 +12,14 @@ import RxTest
 final class MockDisposable : Disposable
 {
     var ticks = [Int]()
-    private let scheduler: TestScheduler
+    private let _scheduler: TestScheduler
     
     init(scheduler: TestScheduler) {
-        self.scheduler = scheduler
-        ticks.append(self.scheduler.clock)
+        _scheduler = scheduler
+        ticks.append(_scheduler.clock)
     }
     
     func dispose() {
-        ticks.append(self.scheduler.clock)
+        ticks.append(_scheduler.clock)
     }
 }

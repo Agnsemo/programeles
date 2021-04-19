@@ -13,7 +13,6 @@ final class LocationCell: UITableViewCell {
 
     @IBOutlet var clubNameLabel: UILabel!
     @IBOutlet var clubWorkingHoursLabel: UILabel!
-    @IBOutlet var findMoreClubsButton: UIButton!
     
     func setup(location: Location) {
         clubNameLabel.text = location.name

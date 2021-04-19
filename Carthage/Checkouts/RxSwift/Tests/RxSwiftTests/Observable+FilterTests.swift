@@ -231,7 +231,7 @@ extension ObservableFilterTest {
             ])
 
         let res = scheduler.start {
-            xs.ignoreElements()
+            (xs.ignoreElements() as Completable).asObservable()
         }
 
         XCTAssertEqual(res.events, [

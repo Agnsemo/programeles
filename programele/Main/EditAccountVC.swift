@@ -19,8 +19,6 @@ final class EditAccountVC: UIViewController, UITextFieldDelegate {
     @IBOutlet private var okButton: UIButton!
     @IBOutlet private var scrollView: UIScrollView!
     
-    let disposeBag = DisposeBag()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +32,7 @@ final class EditAccountVC: UIViewController, UITextFieldDelegate {
         dismissKeyboardOnTap()
         
         okButton.tapDriver
-            .drive(onNext: Weakly(self, EditAccountVC.saveUserData))
+            .driveNext(self, EditAccountVC.saveUserData)
     }
     
     private func setupUserData() {
@@ -44,6 +42,9 @@ final class EditAccountVC: UIViewController, UITextFieldDelegate {
     }
     
     private func setup() {
+        scrollView.keyboardDismissMode = .interactive
+        keyboardAdjust(scrollView)
+        
         userName.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         name.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         surname.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
@@ -69,9 +70,7 @@ final class EditAccountVC: UIViewController, UITextFieldDelegate {
         
         Defaults.user = user
         
-        if let u = Defaults.user {
-            userRelay.accept(u)
-        }
+        updateUser()
         
         db.editUserByID(id: userRelayValue?.id ?? 0, user: user)
         

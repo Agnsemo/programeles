@@ -7,7 +7,16 @@
 //
 
 import RxSwift
-import Foundation
+
+import struct Foundation.URL
+import struct Foundation.Data
+import struct Foundation.NSRange
+import struct Foundation.URLRequest
+import class Foundation.HTTPURLResponse
+import class Foundation.URLSession
+import class Foundation.NSRegularExpression
+import class Foundation.JSONSerialization
+import class Foundation.NSString
 
 /**
  Parsed GitHub repository.
@@ -24,7 +33,7 @@ struct Repository: CustomDebugStringConvertible {
 
 extension Repository {
     var debugDescription: String {
-        "\(name) | \(url)"
+        return "\(name) | \(url)"
     }
 }
 
@@ -56,7 +65,7 @@ extension GitHubSearchRepositoriesAPI {
         return URLSession.shared
             .rx.response(request: URLRequest(url: searchURL))
             .retry(3)
-            .observe(on:Dependencies.sharedDependencies.backgroundWorkScheduler)
+            .observeOn(Dependencies.sharedDependencies.backgroundWorkScheduler)
             .map { pair -> SearchRepositoriesResponse in
                 if pair.0.statusCode == 403 {
                     return .failure(.githubLimitReached)

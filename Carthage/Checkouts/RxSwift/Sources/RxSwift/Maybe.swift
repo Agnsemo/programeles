@@ -1,1 +1,1 @@
-../../RxSwift/Traits/PrimitiveSequence/Maybe.swift
+../../RxSwift/Traits/Maybe.swift

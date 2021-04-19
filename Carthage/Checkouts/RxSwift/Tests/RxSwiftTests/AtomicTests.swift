@@ -38,7 +38,7 @@ private struct AtomicIntSanityCheck {
     }
 
     func load() -> Int32 {
-        self.atom
+        return self.atom
     }
 }
 private typealias AtomicPrimitive = AtomicIntSanityCheck

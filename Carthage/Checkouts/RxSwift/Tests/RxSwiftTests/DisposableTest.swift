@@ -9,12 +9,13 @@
 import XCTest
 import RxSwift
 import RxTest
-import Dispatch
 
+import class Dispatch.DispatchQueue
+import class Dispatch.DispatchSpecificKey
 #if os(Linux)
-    import Glibc
+    import func Glibc.random
 #else
-    import Foundation
+    import func Foundation.arc4random_uniform
 #endif
 
 class DisposableTest : RxTest {
@@ -65,8 +66,8 @@ extension DisposableTest {
             .completed(600)
             ])
         
-        let res = scheduler.start(disposed: 400) {
-            xs
+        let res = scheduler.start(disposed: 400) { () -> Observable<Int> in
+            return xs.asObservable()
         }
         
         XCTAssertEqual(res.events, [

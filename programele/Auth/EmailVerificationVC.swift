@@ -21,7 +21,7 @@ final class EmailVerificationVC: UIViewController, UITextFieldDelegate {
         email.delegate = self
         
         okButton.rx.tapDriver
-            .drive(onNext: Weakly(self, EmailVerificationVC.openSignUp))
+            .driveNext(self, EmailVerificationVC.openSignUp)
     }
     
     private func setup() {

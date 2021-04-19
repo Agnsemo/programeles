@@ -17,6 +17,7 @@ final class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBOutlet private var okButton: UIButton!
     @IBOutlet private var username: UITextField!
     @IBOutlet private var surname: UITextField!
+    @IBOutlet private var scrollView: UIScrollView!
     
     var email: String!
     
@@ -33,10 +34,13 @@ final class SignUpVC: UIViewController, UITextFieldDelegate {
         passwordSecond.delegate = self
         
         okButton.rx.tapDriver
-            .drive(onNext: Weakly(self, SignUpVC.openHome))
+            .driveNext(self, SignUpVC.openHome)
     }
     
     private func setup() {
+        scrollView.keyboardDismissMode = .interactive
+        keyboardAdjust(scrollView)
+        
         name.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         surname.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         username.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
@@ -68,7 +72,6 @@ final class SignUpVC: UIViewController, UITextFieldDelegate {
         
         if !checkPassword(password: p, secondPassword: pt) {
             alert(title: "Jusų slaptažodžiai nesutampa")
-            print("ASD", p, pt)
         } else {
             let user = User(id: id, name: n, email: email, surname: s, password: p, secondPassword: pt, userName: u)
             db.insertUser(id: id, name: n, email: email, surname: s, password: p, username: u)

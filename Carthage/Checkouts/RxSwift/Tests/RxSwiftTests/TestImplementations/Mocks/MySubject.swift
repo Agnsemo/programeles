@@ -8,26 +8,31 @@
 
 import RxSwift
 
-final class MySubject<Element> : SubjectType, ObserverType where Element: Hashable {
+final class MySubject<Element> : SubjectType, ObserverType where Element : Hashable {
     typealias SubjectObserverType = MySubject<Element>
 
-    var disposeOn: [Element : Disposable] = [:]
-    var observer: AnyObserver<Element>! = nil
-    var subscriptionCount: Int = 0
-    var disposed: Bool = false
+    var _disposeOn: [Element : Disposable] = [:]
+    var _observer: AnyObserver<Element>! = nil
+    var _subscribeCount: Int = 0
+    var _isDisposed: Bool = false
     
-    var subscribeCount: Int { subscriptionCount }
-    var isDisposed: Bool { disposed }
+    var subscribeCount: Int {
+        return _subscribeCount
+    }
+    
+    var isDisposed: Bool {
+        return _isDisposed
+    }
     
     func disposeOn(_ value: Element, disposable: Disposable) {
-        self.disposeOn[value] = disposable
+        _disposeOn[value] = disposable
     }
     
     func on(_ event: Event<Element>) {
-        self.observer.on(event)
+        _observer.on(event)
         switch event {
         case .next(let value):
-            if let disposable = self.disposeOn[value] {
+            if let disposable = _disposeOn[value] {
                 disposable.dispose()
             }
         default: break
@@ -35,16 +40,16 @@ final class MySubject<Element> : SubjectType, ObserverType where Element: Hashab
     }
     
     func subscribe<Observer: ObserverType>(_ observer: Observer) -> Disposable where Observer.Element == Element {
-        self.subscriptionCount += 1
-        self.observer = AnyObserver(observer)
+        _subscribeCount += 1
+        _observer = AnyObserver(observer)
         
         return Disposables.create {
-            self.observer = AnyObserver { _ -> Void in () }
-            self.disposed = true
+            self._observer = AnyObserver { _ -> Void in () }
+            self._isDisposed = true
         }
     }
 
     func asObserver() -> MySubject<Element> {
-        self
+        return self
     }
 }

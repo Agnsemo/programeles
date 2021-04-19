@@ -13,17 +13,17 @@ import Glibc
 import Dispatch
 #endif
 
-import Foundation
+import struct Foundation.Date
 
 class ConcurrentDispatchQueueSchedulerTests: RxTest {
     func createScheduler() -> SchedulerType {
-        ConcurrentDispatchQueueScheduler(qos: .userInitiated)
+        return ConcurrentDispatchQueueScheduler(qos: .userInitiated)
     }
 }
 
 final class SerialDispatchQueueSchedulerTests: RxTest {
     func createScheduler() -> SchedulerType {
-        SerialDispatchQueueScheduler(qos: .userInitiated)
+        return SerialDispatchQueueScheduler(qos: .userInitiated)
     }
 }
 

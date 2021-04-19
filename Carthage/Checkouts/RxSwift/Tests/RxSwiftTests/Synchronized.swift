@@ -9,7 +9,7 @@
 import Foundation
 
 class Synchronized<Value> {
-  private let lock = NSRecursiveLock()
+  private let _lock = NSRecursiveLock()
   private var _value: Value
 
   public init(_ value: Value) {
@@ -17,12 +17,12 @@ class Synchronized<Value> {
   }
 
   public var value: Value {
-    self.lock.lock(); defer { self.lock.unlock() }
+    self._lock.lock(); defer { self._lock.unlock() }
     return _value
   }
 
   public func mutate<Result>(_ mutate: (inout Value) -> Result) -> Result {
-    self.lock.lock(); defer { self.lock.unlock() }
+    self._lock.lock(); defer { self._lock.unlock() }
     return mutate(&_value)
   }
 }

@@ -7,7 +7,13 @@
 //
 
 import RxSwift
-import Foundation
+
+import struct Foundation.CharacterSet
+import struct Foundation.URL
+import struct Foundation.URLRequest
+import struct Foundation.NSRange
+import class Foundation.URLSession
+import func Foundation.arc4random
 
 class GitHubDefaultValidationService: GitHubValidationService {
     let API: GitHubAPI
@@ -95,7 +101,7 @@ class GitHubDefaultAPI : GitHubAPI {
             .map { pair in
                 return pair.response.statusCode == 404
             }
-            .catchAndReturn(false)
+            .catchErrorJustReturn(false)
     }
     
     func signup(_ username: String, password: String) -> Observable<Bool> {

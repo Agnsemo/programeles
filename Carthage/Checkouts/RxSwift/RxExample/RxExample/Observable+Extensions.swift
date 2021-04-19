@@ -44,7 +44,7 @@ extension ObservableType where Element == Any {
             })
                 // This is protection from accidental ignoring of scheduler so
                 // reentracy errors can be avoided
-                .observe(on:CurrentThreadScheduler.instance)
+                .observeOn(CurrentThreadScheduler.instance)
 
             return events.scan(initialState, accumulator: reduce)
                 .do(onNext: { output in
@@ -52,9 +52,9 @@ extension ObservableType where Element == Any {
                 }, onSubscribed: {
                     replaySubject.onNext(initialState)
                 })
-                .subscribe(on: scheduler)
+                .subscribeOn(scheduler)
                 .startWith(initialState)
-                .observe(on:scheduler)
+                .observeOn(scheduler)
         }
     }
 
@@ -64,7 +64,7 @@ extension ObservableType where Element == Any {
         scheduler: ImmediateSchedulerType,
         scheduledFeedback: Feedback<State, Event>...
         ) -> Observable<State> {
-        system(initialState: initialState, reduce: reduce, scheduler: scheduler, scheduledFeedback: scheduledFeedback)
+        return system(initialState: initialState, reduce: reduce, scheduler: scheduler, scheduledFeedback: scheduledFeedback)
     }
 }
 
@@ -109,7 +109,7 @@ extension SharedSequenceConvertibleType where Element == Any, SharingStrategy ==
                 reduce: @escaping (State, Event) -> State,
                 feedback: Feedback<State, Event>...
         ) -> Driver<State> {
-        system(initialState: initialState, reduce: reduce, feedback: feedback)
+        return system(initialState: initialState, reduce: reduce, feedback: feedback)
     }
 }
 
@@ -144,6 +144,6 @@ public struct ObservableSchedulerContext<Element>: ObservableType {
     }
 
     public func subscribe<Observer: ObserverType>(_ observer: Observer) -> Disposable where Observer.Element == Element {
-        self.source.subscribe(observer)
+        return self.source.subscribe(observer)
     }
 }

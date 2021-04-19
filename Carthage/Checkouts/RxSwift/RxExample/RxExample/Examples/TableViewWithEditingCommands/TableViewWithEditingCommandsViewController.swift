@@ -78,11 +78,11 @@ class TableViewWithEditingCommandsViewController: ViewController, UITableViewDel
         let loadFavoriteUsers = RandomUserAPI.sharedAPI
             .getExampleUserResultSet()
             .map(TableViewEditingCommand.setUsers)
-            .catchAndReturn(TableViewEditingCommand.setUsers(users: []))
+            .catchErrorJustReturn(TableViewEditingCommand.setUsers(users: []))
 
         let initialLoadCommand = Observable.just(TableViewEditingCommand.setFavoriteUsers(favoriteUsers: [superMan, watMan]))
                 .concat(loadFavoriteUsers)
-                .observe(on:MainScheduler.instance)
+                .observeOn(MainScheduler.instance)
 
         let uiFeedback: Feedback = bind(self) { this, state in
             let subscriptions = [
@@ -150,7 +150,7 @@ class TableViewWithEditingCommandsViewController: ViewController, UITableViewDel
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
+        return 40
     }
 
     // MARK: Navigation

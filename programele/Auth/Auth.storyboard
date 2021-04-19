@@ -16,56 +16,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1hm-xg-0LK">
-                                <rect key="frame" x="20" y="124" width="374" height="297.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOa-du-PVf">
+                                <rect key="frame" x="0.0" y="102" width="414" height="760"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sveiki, Prisijunkite!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWf-YF-weF">
-                                        <rect key="frame" x="118.5" y="0.0" width="137" height="27.5"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5hE-X3-gID">
-                                        <rect key="frame" x="0.0" y="47.5" width="374" height="160"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bwx-NC-vKL">
+                                        <rect key="frame" x="0.0" y="-29" width="414" height="818"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pašto adresas" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCb-NC-Ohr">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1hm-xg-0LK">
+                                                <rect key="frame" x="20" y="50" width="374" height="297.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sveiki, Prisijunkite!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWf-YF-weF">
+                                                        <rect key="frame" x="118.5" y="0.0" width="137" height="27.5"/>
+                                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5hE-X3-gID">
+                                                        <rect key="frame" x="0.0" y="47.5" width="374" height="160"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pašto adresas" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCb-NC-Ohr">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="70" id="ssI-lX-lcD"/>
+                                                                </constraints>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Slaptažodis" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eIs-7e-IoM">
+                                                                <rect key="frame" x="0.0" y="90" width="374" height="70"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="70" id="gE7-EB-P5Z"/>
+                                                                </constraints>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWc-Xu-HcF">
+                                                        <rect key="frame" x="0.0" y="227.5" width="374" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="c5P-Kd-EHr"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                                        <state key="normal" title="Gerai">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="ssI-lX-lcD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5hE-X3-gID" secondAttribute="trailing" id="45F-th-CDK"/>
+                                                    <constraint firstItem="uWc-Xu-HcF" firstAttribute="leading" secondItem="1hm-xg-0LK" secondAttribute="leading" id="9e5-qo-lIB"/>
+                                                    <constraint firstItem="5hE-X3-gID" firstAttribute="leading" secondItem="1hm-xg-0LK" secondAttribute="leading" id="QGG-dS-KYc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uWc-Xu-HcF" secondAttribute="trailing" id="lzq-sj-zKQ"/>
                                                 </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Slaptažodis" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eIs-7e-IoM">
-                                                <rect key="frame" x="0.0" y="90" width="374" height="70"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="gE7-EB-P5Z"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
-                                            </textField>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWc-Xu-HcF">
-                                        <rect key="frame" x="0.0" y="227.5" width="374" height="70"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="c5P-Kd-EHr"/>
+                                            <constraint firstItem="1hm-xg-0LK" firstAttribute="top" secondItem="Bwx-NC-vKL" secondAttribute="top" constant="50" id="Vlk-Ke-tvp"/>
+                                            <constraint firstAttribute="trailing" secondItem="1hm-xg-0LK" secondAttribute="trailing" constant="20" id="sex-DQ-l4W"/>
+                                            <constraint firstItem="1hm-xg-0LK" firstAttribute="leading" secondItem="Bwx-NC-vKL" secondAttribute="leading" constant="20" id="unz-VF-A9k"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
-                                        <state key="normal" title="Gerai">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="5hE-X3-gID" secondAttribute="trailing" id="45F-th-CDK"/>
-                                    <constraint firstItem="uWc-Xu-HcF" firstAttribute="leading" secondItem="1hm-xg-0LK" secondAttribute="leading" id="9e5-qo-lIB"/>
-                                    <constraint firstItem="5hE-X3-gID" firstAttribute="leading" secondItem="1hm-xg-0LK" secondAttribute="leading" id="QGG-dS-KYc"/>
-                                    <constraint firstAttribute="trailing" secondItem="uWc-Xu-HcF" secondAttribute="trailing" id="lzq-sj-zKQ"/>
+                                    <constraint firstItem="Bwx-NC-vKL" firstAttribute="top" secondItem="LOa-du-PVf" secondAttribute="top" constant="-29" id="3bp-5s-uVg"/>
+                                    <constraint firstItem="Bwx-NC-vKL" firstAttribute="width" secondItem="LOa-du-PVf" secondAttribute="width" id="4FG-yQ-eus"/>
+                                    <constraint firstItem="Bwx-NC-vKL" firstAttribute="height" secondItem="LOa-du-PVf" secondAttribute="height" multiplier="1.07632" id="6T9-4s-Ewl"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bwx-NC-vKL" secondAttribute="bottom" constant="-29" id="QXm-eH-zte"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bwx-NC-vKL" secondAttribute="trailing" id="hry-Nc-P5e"/>
+                                    <constraint firstItem="Bwx-NC-vKL" firstAttribute="leading" secondItem="LOa-du-PVf" secondAttribute="leading" id="vhZ-9j-gXL"/>
                                 </constraints>
-                            </stackView>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vem-Js-OnF">
                                 <rect key="frame" x="280" y="74" width="114" height="28"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
@@ -79,11 +103,12 @@
                         <viewLayoutGuide key="safeArea" id="SWq-9j-20m"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="1hm-xg-0LK" firstAttribute="top" secondItem="Vem-Js-OnF" secondAttribute="top" constant="50" id="Jgn-0H-wTC"/>
+                            <constraint firstItem="LOa-du-PVf" firstAttribute="leading" secondItem="SWq-9j-20m" secondAttribute="leading" id="1WH-mu-cyw"/>
+                            <constraint firstItem="SWq-9j-20m" firstAttribute="bottom" secondItem="LOa-du-PVf" secondAttribute="bottom" id="Tar-wJ-ciU"/>
                             <constraint firstItem="Vem-Js-OnF" firstAttribute="top" secondItem="SWq-9j-20m" secondAttribute="top" constant="30" id="U5r-Ul-yEE"/>
+                            <constraint firstItem="LOa-du-PVf" firstAttribute="top" secondItem="Vem-Js-OnF" secondAttribute="bottom" id="i33-iS-zGr"/>
+                            <constraint firstItem="SWq-9j-20m" firstAttribute="trailing" secondItem="LOa-du-PVf" secondAttribute="trailing" id="i9R-X3-RZ1"/>
                             <constraint firstItem="SWq-9j-20m" firstAttribute="trailing" secondItem="Vem-Js-OnF" secondAttribute="trailing" constant="20" id="rI9-2z-LPH"/>
-                            <constraint firstItem="1hm-xg-0LK" firstAttribute="leading" secondItem="SWq-9j-20m" secondAttribute="leading" constant="20" id="uKH-gY-0Y2"/>
-                            <constraint firstItem="SWq-9j-20m" firstAttribute="trailing" secondItem="1hm-xg-0LK" secondAttribute="trailing" constant="20" id="z8U-mT-bOf"/>
                         </constraints>
                     </view>
                     <connections>
@@ -92,12 +117,13 @@
                         <outlet property="okButton" destination="uWc-Xu-HcF" id="gec-Ra-Ixn"/>
                         <outlet property="password" destination="eIs-7e-IoM" id="4nL-b2-Qkh"/>
                         <outlet property="register" destination="Vem-Js-OnF" id="dcC-sa-S8Q"/>
+                        <outlet property="scrollView" destination="LOa-du-PVf" id="lYE-rm-I50"/>
                         <segue destination="DP6-Ma-nX8" kind="show" identifier="LoginVC" id="hiL-Y4-Ixs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edE-Ef-GDW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="78"/>
+            <point key="canvasLocation" x="53.623188405797109" y="77.678571428571431"/>
         </scene>
         <!--Email VerificationVC-->
         <scene sceneID="nmY-Kv-ZK1">
@@ -173,83 +199,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-cU-KxC">
-                                <rect key="frame" x="20" y="50" width="374" height="470"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lZ-fm-0sc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vardas" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMD-Zd-rFm">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqg-wp-JTw">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-cU-KxC">
+                                                <rect key="frame" x="20" y="50" width="374" height="470"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vardas" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMD-Zd-rFm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="eXH-Y2-lgi"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pavardė" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FoQ-XC-rz4">
+                                                        <rect key="frame" x="0.0" y="80" width="374" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="ArG-j3-v9r"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vartotojo vardas" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1h-Or-jiN">
+                                                        <rect key="frame" x="0.0" y="160" width="374" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="Zy0-Hu-bfv"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Slaptažodis" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D60-Q2-OFZ">
+                                                        <rect key="frame" x="0.0" y="240" width="374" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="Yp8-2k-EkR"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pakartoti slaptažodį" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ul-ck-gIi">
+                                                        <rect key="frame" x="0.0" y="320" width="374" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="Tfm-Zq-yEH"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vr-78-TOy">
+                                                        <rect key="frame" x="0.0" y="400" width="374" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="41W-jO-0n7"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                                        <state key="normal" title="Gerai">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="CMD-Zd-rFm" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="9hG-js-Lah"/>
+                                                    <constraint firstItem="CMD-Zd-rFm" firstAttribute="top" secondItem="cmZ-cU-KxC" secondAttribute="top" id="9sa-AN-0mD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="D60-Q2-OFZ" secondAttribute="trailing" id="AiM-Ge-gCX"/>
+                                                    <constraint firstItem="6vr-78-TOy" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="LEY-Xg-S1z"/>
+                                                    <constraint firstItem="D60-Q2-OFZ" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="PZD-Sz-QiO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6vr-78-TOy" secondAttribute="trailing" id="TCG-fp-Wu5"/>
+                                                    <constraint firstAttribute="bottom" secondItem="6vr-78-TOy" secondAttribute="bottom" id="mR5-Gc-NUI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CMD-Zd-rFm" secondAttribute="trailing" id="wl8-Ju-Vch"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="eXH-Y2-lgi"/>
+                                            <constraint firstItem="cmZ-cU-KxC" firstAttribute="leading" secondItem="oqg-wp-JTw" secondAttribute="leading" constant="20" id="54h-zV-pTX"/>
+                                            <constraint firstItem="cmZ-cU-KxC" firstAttribute="top" secondItem="oqg-wp-JTw" secondAttribute="top" constant="50" id="PH8-Va-Qed"/>
+                                            <constraint firstAttribute="trailing" secondItem="cmZ-cU-KxC" secondAttribute="trailing" constant="20" id="Z7j-U4-5jn"/>
                                         </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pavardė" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FoQ-XC-rz4">
-                                        <rect key="frame" x="0.0" y="80" width="374" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="ArG-j3-v9r"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vartotojo vardas" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1h-Or-jiN">
-                                        <rect key="frame" x="0.0" y="160" width="374" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="Zy0-Hu-bfv"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Slaptažodis" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D60-Q2-OFZ">
-                                        <rect key="frame" x="0.0" y="240" width="374" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="Yp8-2k-EkR"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pakartoti slaptažodį" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ul-ck-gIi">
-                                        <rect key="frame" x="0.0" y="320" width="374" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="Tfm-Zq-yEH"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vr-78-TOy">
-                                        <rect key="frame" x="0.0" y="400" width="374" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="41W-jO-0n7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
-                                        <state key="normal" title="Gerai">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="CMD-Zd-rFm" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="9hG-js-Lah"/>
-                                    <constraint firstItem="CMD-Zd-rFm" firstAttribute="top" secondItem="cmZ-cU-KxC" secondAttribute="top" id="9sa-AN-0mD"/>
-                                    <constraint firstAttribute="trailing" secondItem="D60-Q2-OFZ" secondAttribute="trailing" id="AiM-Ge-gCX"/>
-                                    <constraint firstItem="6vr-78-TOy" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="LEY-Xg-S1z"/>
-                                    <constraint firstItem="D60-Q2-OFZ" firstAttribute="leading" secondItem="cmZ-cU-KxC" secondAttribute="leading" id="PZD-Sz-QiO"/>
-                                    <constraint firstAttribute="trailing" secondItem="6vr-78-TOy" secondAttribute="trailing" id="TCG-fp-Wu5"/>
-                                    <constraint firstAttribute="bottom" secondItem="6vr-78-TOy" secondAttribute="bottom" id="mR5-Gc-NUI"/>
-                                    <constraint firstAttribute="trailing" secondItem="CMD-Zd-rFm" secondAttribute="trailing" id="wl8-Ju-Vch"/>
+                                    <constraint firstItem="oqg-wp-JTw" firstAttribute="top" secondItem="0lZ-fm-0sc" secondAttribute="top" id="CFa-Os-yWq"/>
+                                    <constraint firstItem="oqg-wp-JTw" firstAttribute="width" secondItem="0lZ-fm-0sc" secondAttribute="width" id="Cig-3J-iUw"/>
+                                    <constraint firstAttribute="bottom" secondItem="oqg-wp-JTw" secondAttribute="bottom" id="DsK-q2-ewc"/>
+                                    <constraint firstItem="oqg-wp-JTw" firstAttribute="height" secondItem="0lZ-fm-0sc" secondAttribute="height" id="Qe0-Nn-Ijc"/>
+                                    <constraint firstItem="oqg-wp-JTw" firstAttribute="leading" secondItem="0lZ-fm-0sc" secondAttribute="leading" id="VfM-ay-VNp"/>
+                                    <constraint firstAttribute="trailing" secondItem="oqg-wp-JTw" secondAttribute="trailing" id="Vv1-Lh-WJO"/>
                                 </constraints>
-                            </stackView>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IZa-gC-Okp"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="cmZ-cU-KxC" firstAttribute="leading" secondItem="IZa-gC-Okp" secondAttribute="leading" constant="20" id="WRz-rQ-r9P"/>
-                            <constraint firstItem="IZa-gC-Okp" firstAttribute="trailing" secondItem="cmZ-cU-KxC" secondAttribute="trailing" constant="20" id="Wli-K6-n72"/>
-                            <constraint firstItem="cmZ-cU-KxC" firstAttribute="top" secondItem="IZa-gC-Okp" secondAttribute="top" constant="50" id="ZiS-ak-jTT"/>
+                            <constraint firstItem="0lZ-fm-0sc" firstAttribute="leading" secondItem="IZa-gC-Okp" secondAttribute="leading" id="NaQ-XS-vWy"/>
+                            <constraint firstItem="IZa-gC-Okp" firstAttribute="trailing" secondItem="0lZ-fm-0sc" secondAttribute="trailing" id="OyR-Cl-4ec"/>
+                            <constraint firstItem="IZa-gC-Okp" firstAttribute="bottom" secondItem="0lZ-fm-0sc" secondAttribute="bottom" id="fno-uo-ilf"/>
+                            <constraint firstItem="0lZ-fm-0sc" firstAttribute="top" secondItem="IZa-gC-Okp" secondAttribute="top" id="uOV-Fz-ahH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="47s-mQ-5Tg"/>
@@ -259,6 +310,7 @@
                         <outlet property="okButton" destination="6vr-78-TOy" id="Me2-FM-m4f"/>
                         <outlet property="password" destination="D60-Q2-OFZ" id="HV7-Kf-Ik4"/>
                         <outlet property="passwordSecond" destination="6ul-ck-gIi" id="BLy-lA-V8h"/>
+                        <outlet property="scrollView" destination="0lZ-fm-0sc" id="6Gj-3n-jwn"/>
                         <outlet property="surname" destination="FoQ-XC-rz4" id="c1E-4d-004"/>
                         <outlet property="username" destination="y1h-Or-jiN" id="vrK-IU-A9t"/>
                     </connections>

@@ -18,7 +18,7 @@ extension IdentifiableValue
     public typealias Identity = Value
 
     public var identity : Identity {
-        value
+        return value
     }
 }
 
@@ -28,11 +28,11 @@ extension IdentifiableValue
     , CustomDebugStringConvertible {
 
     public var description: String {
-        "\(value)"
+        return "\(value)"
     }
 
     public var debugDescription: String {
-        "\(value)"
+        return "\(value)"
     }
 }
 

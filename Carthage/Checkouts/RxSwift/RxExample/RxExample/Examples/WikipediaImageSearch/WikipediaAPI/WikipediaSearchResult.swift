@@ -8,7 +8,7 @@
 
 import RxSwift
 
-import Foundation
+import struct Foundation.URL
 
 struct WikipediaSearchResult: CustomDebugStringConvertible {
     let title: String
@@ -44,6 +44,6 @@ struct WikipediaSearchResult: CustomDebugStringConvertible {
 
 extension WikipediaSearchResult {
     var debugDescription: String {
-        "[\(title)](\(URL))"
+        return "[\(title)](\(URL))"
     }
 }

@@ -8,7 +8,7 @@
 
 import XCTest
 import RxSwift
-import Foundation
+import class Foundation.NSNull
 
 final class AssumptionsTest : RxTest {
     

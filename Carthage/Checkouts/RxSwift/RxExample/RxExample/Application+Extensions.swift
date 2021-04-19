@@ -16,6 +16,6 @@
 
 extension OSApplication {
     static var isInUITest: Bool {
-        ProcessInfo.processInfo.environment["isUITest"] != nil;
+        return ProcessInfo.processInfo.environment["isUITest"] != nil;
     }
 }

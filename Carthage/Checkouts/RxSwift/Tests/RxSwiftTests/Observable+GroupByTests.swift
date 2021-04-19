@@ -1123,10 +1123,10 @@ extension ObservableGroupByTest {
     #endif
 }
 
-import Foundation
+import struct Foundation.CharacterSet
 
 extension String {
     fileprivate func trimWhitespace() -> String {
-        self.trimmingCharacters(in: CharacterSet.whitespaces)
+        return self.trimmingCharacters(in: CharacterSet.whitespaces)
     }
 }

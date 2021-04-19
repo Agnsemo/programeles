@@ -14,10 +14,9 @@ import SQLite3
 
 final class HomeVC: UIViewController {
     
+    @IBOutlet private var checkinButton: UIButton!
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var accountButton: UIButton!
-    
-    private let disposeBag = DisposeBag()
     
     var user: User!
     
@@ -31,16 +30,19 @@ final class HomeVC: UIViewController {
         sections
             .asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
+            .disposed(by: rx.disposeBag)
         
         
         tableView.rx.modelSelected(SectionItem.self)
             .subscribe{ sectionItem in
                 self.getActivity(sectionItem: sectionItem)
-            }.disposed(by: disposeBag)
+            }.disposed(by: rx.disposeBag)
         
         accountButton.rx.tapDriver
-            .drive(onNext: Weakly(self, HomeVC.openAccount))
+            .driveNext(self, HomeVC.openAccount)
+        
+        checkinButton.rx.tapDriver
+            .driveNext(self, HomeVC.openAccountList)
         
     }
     
@@ -50,6 +52,10 @@ final class HomeVC: UIViewController {
     
     private func openAccount() {
         performSegue(withIdentifier: "AccountVC", sender: nil)
+    }
+    
+    private func openAccountList() {
+        performSegue(withIdentifier: "ActivitiesList", sender: nil)
     }
     
    private func getActivity(sectionItem: SectionItem) {
@@ -72,9 +78,7 @@ final class HomeVC: UIViewController {
         
         userRelay.accept(user)
         
-        if let location = Defaults.location {
-            locationRelay.accept(location)
-        }
+        updateLocation()
         
         insertDataIntoDB()
         updateActivities()

@@ -26,7 +26,8 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 
 import SystemConfiguration
-import Foundation
+import struct Foundation.Notification
+import class Foundation.NotificationCenter
 
 public enum ReachabilityError: Error {
     case failedToCreateWithAddress(sockaddr_in)
@@ -74,7 +75,7 @@ public class Reachability {
     public var notificationCenter: NotificationCenter = NotificationCenter.default
 
     public var currentReachabilityString: String {
-        "\(currentReachabilityStatus)"
+        return "\(currentReachabilityStatus)"
     }
 
     public var currentReachabilityStatus: NetworkStatus {
@@ -250,34 +251,34 @@ private extension Reachability {
         #endif
     }
     var isReachableFlagSet: Bool {
-        reachabilityFlags.contains(.reachable)
+        return reachabilityFlags.contains(.reachable)
     }
     var isConnectionRequiredFlagSet: Bool {
-        reachabilityFlags.contains(.connectionRequired)
+        return reachabilityFlags.contains(.connectionRequired)
     }
     var isInterventionRequiredFlagSet: Bool {
-        reachabilityFlags.contains(.interventionRequired)
+        return reachabilityFlags.contains(.interventionRequired)
     }
     var isConnectionOnTrafficFlagSet: Bool {
-        reachabilityFlags.contains(.connectionOnTraffic)
+        return reachabilityFlags.contains(.connectionOnTraffic)
     }
     var isConnectionOnDemandFlagSet: Bool {
-        reachabilityFlags.contains(.connectionOnDemand)
+        return reachabilityFlags.contains(.connectionOnDemand)
     }
     var isConnectionOnTrafficOrDemandFlagSet: Bool {
-        !reachabilityFlags.intersection([.connectionOnTraffic, .connectionOnDemand]).isEmpty
+        return !reachabilityFlags.intersection([.connectionOnTraffic, .connectionOnDemand]).isEmpty
     }
     var isTransientConnectionFlagSet: Bool {
-        reachabilityFlags.contains(.transientConnection)
+        return reachabilityFlags.contains(.transientConnection)
     }
     var isLocalAddressFlagSet: Bool {
-        reachabilityFlags.contains(.isLocalAddress)
+        return reachabilityFlags.contains(.isLocalAddress)
     }
     var isDirectFlagSet: Bool {
-        reachabilityFlags.contains(.isDirect)
+        return reachabilityFlags.contains(.isDirect)
     }
     var isConnectionRequiredAndTransientFlagSet: Bool {
-        reachabilityFlags.intersection([.connectionRequired, .transientConnection]) == [.connectionRequired, .transientConnection]
+        return reachabilityFlags.intersection([.connectionRequired, .transientConnection]) == [.connectionRequired, .transientConnection]
     }
     
     var reachabilityFlags: SCNetworkReachabilityFlags {

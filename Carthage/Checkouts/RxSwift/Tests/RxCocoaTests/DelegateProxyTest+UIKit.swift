@@ -132,11 +132,11 @@ final class UITableViewSubclass1
     }
 
     var delegateProxy: DelegateProxy<UIScrollView, UIScrollViewDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
     
     func setMineForwardDelegate(_ testDelegate: UIScrollViewDelegate) -> Disposable {
-        RxScrollViewDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxScrollViewDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -161,11 +161,11 @@ final class UITableViewSubclass2
     }
 
     var delegateProxy: DelegateProxy<UITableView, UITableViewDataSource> {
-        self.rx.dataSource
+        return self.rx.dataSource
     }
 
     func setMineForwardDelegate(_ testDelegate: UITableViewDataSource) -> Disposable {
-        RxTableViewDataSourceProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxTableViewDataSourceProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -193,11 +193,11 @@ final class UITableViewSubclass3
     }
 
     var delegateProxy: DelegateProxy<UITableView, UITableViewDataSourcePrefetching> {
-        self.rx.prefetchDataSource
+        return self.rx.prefetchDataSource
     }
 
     func setMineForwardDelegate(_ testDelegate: UITableViewDataSourcePrefetching) -> Disposable {
-        RxTableViewDataSourcePrefetchingProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxTableViewDataSourcePrefetchingProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -220,11 +220,11 @@ final class UICollectionViewSubclass1
     }
 
     var delegateProxy: DelegateProxy<UIScrollView, UIScrollViewDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: UIScrollViewDelegate) -> Disposable {
-        RxScrollViewDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxScrollViewDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -250,11 +250,11 @@ final class UICollectionViewSubclass2
     }
 
     var delegateProxy: DelegateProxy<UICollectionView, UICollectionViewDataSource> {
-        self.rx.dataSource
+        return self.rx.dataSource
     }
 
     func setMineForwardDelegate(_ testDelegate: UICollectionViewDataSource) -> Disposable {
-        RxCollectionViewDataSourceProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxCollectionViewDataSourceProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -282,11 +282,11 @@ final class UICollectionViewSubclass3
     }
 
     var delegateProxy: DelegateProxy<UICollectionView, UICollectionViewDataSourcePrefetching> {
-        self.rx.prefetchDataSource
+        return self.rx.prefetchDataSource
     }
 
     func setMineForwardDelegate(_ testDelegate: UICollectionViewDataSourcePrefetching) -> Disposable {
-        RxCollectionViewDataSourcePrefetchingProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxCollectionViewDataSourcePrefetchingProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -309,11 +309,11 @@ final class UIScrollViewSubclass
     }
 
     var delegateProxy: DelegateProxy<UIScrollView, UIScrollViewDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: UIScrollViewDelegate) -> Disposable {
-        RxScrollViewDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxScrollViewDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -337,11 +337,11 @@ final class UISearchBarSubclass
     }
     
     var delegateProxy: DelegateProxy<UISearchBar, UISearchBarDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: UISearchBarDelegate) -> Disposable {
-        RxSearchBarDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxSearchBarDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 #endif
@@ -365,11 +365,11 @@ final class UITextViewSubclass
     }
 
     var delegateProxy: DelegateProxy<UIScrollView, UIScrollViewDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: UIScrollViewDelegate) -> Disposable {
-        RxScrollViewDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxScrollViewDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 #if os(iOS)
@@ -389,11 +389,11 @@ final class UISearchControllerSubclass
     }
     
     var delegateProxy: DelegateProxy<UISearchController, UISearchControllerDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: UISearchControllerDelegate) -> Disposable {
-        RxSearchControllerDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxSearchControllerDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -414,7 +414,7 @@ final class UIPickerViewSubclass
     }
     
     var delegateProxy: DelegateProxy<UIPickerView, UIPickerViewDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: UIPickerViewDelegate) -> Disposable {
@@ -443,11 +443,11 @@ final class UIPickerViewSubclass2: UIPickerView, TestDelegateControl {
     }
     
     var delegateProxy: DelegateProxy<UIPickerView, UIPickerViewDataSource> {
-        self.rx.dataSource
+        return self.rx.dataSource
     }
     
     func setMineForwardDelegate(_ testDelegate: UIPickerViewDataSource) -> Disposable {
-        RxPickerViewDataSourceProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxPickerViewDataSourceProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 #endif
@@ -471,11 +471,11 @@ final class NSTextStorageSubclass
     }
 
     var delegateProxy: DelegateProxy<NSTextStorage, NSTextStorageDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: NSTextStorageDelegate) -> Disposable {
-        RxTextStorageDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxTextStorageDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -518,7 +518,7 @@ final class UINavigationControllerSubclass: UINavigationController, TestDelegate
     }
 
     var delegateProxy: DelegateProxy<UINavigationController, UINavigationControllerDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
 
     func setMineForwardDelegate(_ testDelegate: UINavigationControllerDelegate) -> Disposable {
@@ -536,11 +536,11 @@ final class UITabBarControllerSubclass
     }
     
     var delegateProxy: DelegateProxy<UITabBarController, UITabBarControllerDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
     
     func setMineForwardDelegate(_ testDelegate: UITabBarControllerDelegate) -> Disposable {
-        RxTabBarControllerDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
+        return RxTabBarControllerDelegateProxy.installForwardDelegate(testDelegate, retainDelegate: false, onProxyForObject: self)
     }
 }
 
@@ -550,7 +550,7 @@ final class UITabBarSubclass: UITabBar, TestDelegateControl {
     }
     
     var delegateProxy: DelegateProxy<UITabBar, UITabBarDelegate> {
-        self.rx.delegate
+        return self.rx.delegate
     }
     
     func setMineForwardDelegate(_ testDelegate: UITabBarDelegate) -> Disposable {

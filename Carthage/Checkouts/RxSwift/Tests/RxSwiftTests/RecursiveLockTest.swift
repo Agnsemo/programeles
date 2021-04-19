@@ -12,7 +12,7 @@ import XCTest
     import Glibc
     import Foundation
 #else
-    import Darwin
+    import Darwin.C
 #endif
 
 private class StrandClosure {
@@ -41,12 +41,12 @@ private class StrandClosure {
 #endif
 
 class RecursiveLockTests: RxTest {
-    var joinPthreads = Synchronized([pthread_t]())
+    var _joinPthreads = Synchronized([pthread_t]())
 
     override func tearDown() {
       super.tearDown()
 
-      for thread in joinPthreads.value {
+      for thread in _joinPthreads.value {
         pthread_join(thread, nil)
       }
     }
@@ -71,7 +71,7 @@ class RecursiveLockTests: RxTest {
             }
         #endif
 
-        self.joinPthreads.mutate { $0.append(pthread) }
+        self._joinPthreads.mutate { $0.append(pthread) }
     }
 }
 

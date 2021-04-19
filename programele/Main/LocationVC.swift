@@ -15,32 +15,29 @@ final class LocationVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet private var tableView: UITableView!
     
-    let disposeBag = DisposeBag()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        tableView.rx.setDelegate(self).disposed(by: rx.disposeBag)
         tableView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         
         moreLocationsDriver
             .drive(tableView.rx.items(cellIdentifier: "MoreLocationCell", cellType: MoreLocationCell.self)) { (row, item, cell) in
                 cell.setup(location: item)                
             }
-            .disposed(by: disposeBag)
+            .disposed(by: rx.disposeBag)
         
         tableView.rx.modelSelected(Location.self)
             .subscribe{ location in
                 self.changeHomeLocation(location: location) }
-            .disposed(by: disposeBag)
+            .disposed(by: rx.disposeBag)
     }
     
     private func changeHomeLocation(location: Location) {
         Defaults.location = location
         
-        if let l = Defaults.location {
-            locationRelay.accept(l)
-        }
+        updateLocation()
+        
         self.navigationController?.popViewController(animated: true)
     }
 }

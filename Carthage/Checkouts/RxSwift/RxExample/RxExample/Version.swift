@@ -6,7 +6,7 @@
 //  Copyright © 2017 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
+import class Foundation.NSObject
 
 class Unique: NSObject {
 }
@@ -26,7 +26,7 @@ struct Version<Value>: Hashable {
     }
 
     static func == (lhs: Version<Value>, rhs: Version<Value>) -> Bool {
-        lhs._unique === rhs._unique
+        return lhs._unique === rhs._unique
     }
 }
 

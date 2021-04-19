@@ -62,15 +62,14 @@ class SimpleValidationViewController : ViewController {
     }
 
     func showAlert() {
-        let alert = UIAlertController(
+        let alertView = UIAlertView(
             title: "RxExample",
             message: "This is wonderful",
-            preferredStyle: .alert
+            delegate: nil,
+            cancelButtonTitle: "OK"
         )
-        let defaultAction = UIAlertAction(title: "Ok",
-                                          style: .default,
-                                          handler: nil)
-        alert.addAction(defaultAction)
-        present(alert, animated: true, completion: nil)
+
+        alertView.show()
     }
+
 }

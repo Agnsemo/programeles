@@ -67,7 +67,7 @@ public struct Changeset<Section: SectionModelType> {
 extension ItemPath
     : CustomDebugStringConvertible {
     public var debugDescription : String {
-        "(\(sectionIndex), \(itemIndex))"
+        return "(\(sectionIndex), \(itemIndex))"
     }
 }
 

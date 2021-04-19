@@ -24,14 +24,14 @@ struct ObservedSequence {
     let sequence: Observable<MethodParameters>
 
     static func sentMessage(_ sequence: Observable<MethodParameters>) -> ObservedSequence {
-        ObservedSequence(stage: .sentMessage, sequence: sequence)
+        return ObservedSequence(stage: .sentMessage, sequence: sequence)
     }
 
     static func invoking(_ sequence: Observable<MethodParameters>) -> ObservedSequence {
-        ObservedSequence(stage: .invoking, sequence: sequence)
+        return ObservedSequence(stage: .invoking, sequence: sequence)
     }
 
     static func methodInvoked(_ sequence: Observable<MethodParameters>) -> ObservedSequence {
-        ObservedSequence(stage: .methodInvoked, sequence: sequence)
+        return ObservedSequence(stage: .methodInvoked, sequence: sequence)
     }
 }

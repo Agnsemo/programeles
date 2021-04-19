@@ -87,7 +87,7 @@ open class TableViewSectionedDataSource<Section: SectionModelType>
     private var _sectionModels: [SectionModelSnapshot] = []
 
     open var sectionModels: [Section] {
-        _sectionModels.map { Section(original: $0.model, items: $0.items) }
+        return _sectionModels.map { Section(original: $0.model, items: $0.items) }
     }
 
     open subscript(section: Int) -> Section {
@@ -107,7 +107,7 @@ open class TableViewSectionedDataSource<Section: SectionModelType>
     }
 
     open func model(at indexPath: IndexPath) throws -> Any {
-        self[indexPath]
+        return self[indexPath]
     }
 
     open func setSections(_ sections: [Section]) {
@@ -175,7 +175,7 @@ open class TableViewSectionedDataSource<Section: SectionModelType>
     // UITableViewDataSource
     
     open func numberOfSections(in tableView: UITableView) -> Int {
-        _sectionModels.count
+        return _sectionModels.count
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -190,19 +190,19 @@ open class TableViewSectionedDataSource<Section: SectionModelType>
     }
     
     open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        titleForHeaderInSection(self, section)
+        return titleForHeaderInSection(self, section)
     }
    
     open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        titleForFooterInSection(self, section)
+        return titleForFooterInSection(self, section)
     }
     
     open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        canEditRowAtIndexPath(self, indexPath)
+        return canEditRowAtIndexPath(self, indexPath)
     }
    
     open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        canMoveRowAtIndexPath(self, indexPath)
+        return canMoveRowAtIndexPath(self, indexPath)
     }
 
     open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -211,11 +211,11 @@ open class TableViewSectionedDataSource<Section: SectionModelType>
 
     #if os(iOS)
     open func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        sectionIndexTitles(self)
+        return sectionIndexTitles(self)
     }
     
     open func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        sectionForSectionIndexTitle(self, title, index)
+        return sectionForSectionIndexTitle(self, title, index)
     }
     #endif
 }

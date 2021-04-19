@@ -71,10 +71,10 @@ class SimpleTableViewExampleSectionedViewController
 
     // to prevent swipe to delete behavior
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        .none
+        return .none
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
+        return 40
     }
 }

@@ -8,7 +8,7 @@
 
 import RxSwift
 
-import Foundation
+import class Foundation.NSDictionary
 
 struct WikipediaPage {
     let title: String

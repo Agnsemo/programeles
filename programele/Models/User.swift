@@ -9,7 +9,6 @@ import Foundation
 import SwiftyUserDefaults
 
 struct User: Codable, DefaultsSerializable {
-
     let id: Int
     let name: String
     let email: String

@@ -13,7 +13,7 @@ final class PrimitiveMockObserver<Element> : ObserverType {
     private let _events = Synchronized([Recorded<Event<Element>>]())
 
     var events: [Recorded<Event<Element>>] {
-        self._events.value
+        return self._events.value
     }
     
     func on(_ event: Event<Element>) {

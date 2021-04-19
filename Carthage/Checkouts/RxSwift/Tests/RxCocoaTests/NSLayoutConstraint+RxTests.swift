@@ -45,6 +45,7 @@ extension NSLayoutConstraintTest {
     }
 }
 
+@available(iOS 8, OSX 10.10, *)
 extension NSLayoutConstraintTest {
     func testActive_True() {
         let parent = View(frame: CGRect.zero)
@@ -53,7 +54,7 @@ extension NSLayoutConstraintTest {
         parent.addSubview(subject)
         parent.addSubview(subject2)
         let constraint = NSLayoutConstraint(item: subject, attribute: topLayoutAttribute, relatedBy: equalLayoutRelation, toItem: subject2, attribute: topLayoutAttribute, multiplier: 0.5, constant: 0.5)
-        Observable.just(true).subscribe(constraint.rx.isActive).dispose()
+        Observable.just(true).subscribe(constraint.rx.active).dispose()
 
         XCTAssertTrue(constraint.isActive == true)
     }
@@ -65,7 +66,7 @@ extension NSLayoutConstraintTest {
         parent.addSubview(subject)
         parent.addSubview(subject2)
         let constraint = NSLayoutConstraint(item: subject, attribute: topLayoutAttribute, relatedBy: equalLayoutRelation, toItem: subject2, attribute: topLayoutAttribute, multiplier: 0.5, constant: 0.5)
-        Observable.just(false).subscribe(constraint.rx.isActive).dispose()
+        Observable.just(false).subscribe(constraint.rx.active).dispose()
 
         XCTAssertTrue(constraint.isActive == false)
     }

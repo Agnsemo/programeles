@@ -17,6 +17,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet private var password: UITextField!
     @IBOutlet private var okButton: UIButton!
     @IBOutlet private var register: UIButton!
+    @IBOutlet private var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +27,18 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         password.delegate = self
         email.becomeFirstResponder()
         
-        
         okButton.rx.tapDriver
-            .drive(onNext: Weakly(self, LoginVC.openHome))
+            .driveNext(self, LoginVC.openHome)
         
         register.rx.tapDriver
-            .drive(onNext: Weakly(self, LoginVC.openSignUp))
+            .driveNext(self, LoginVC.openSignUp)
         
     }
     
     private func setup() {
+        scrollView.keyboardDismissMode = .interactive
+        keyboardAdjust(scrollView)
+        
         email.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         password.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         okButton.backgroundColor = UIColor.appPurple

@@ -21,10 +21,10 @@ class MockGitHubAPI : GitHubAPI {
     }
 
     func usernameAvailable(_ username: String) -> Observable<Bool> {
-        _usernameAvailable(username)
+        return _usernameAvailable(username)
     }
 
     func signup(_ username: String, password: String) -> Observable<Bool> {
-        _signup((username, password))
+        return _signup((username, password))
     }
 }
