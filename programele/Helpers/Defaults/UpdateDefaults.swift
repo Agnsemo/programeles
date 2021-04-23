@@ -19,3 +19,10 @@ func updateUser() {
         userRelay.accept(u)
     }
 }
+
+func updateRegistration() {
+    if let r = Defaults.registration {
+        activitiesRegistrationRelay.accept(r)
+        activitiesRegistrationArray = r
+    }
+}

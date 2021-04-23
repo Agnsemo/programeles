@@ -24,6 +24,8 @@
 		F6237EAD25FFEF1D004C9C7E /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6237EAC25FFEF1D004C9C7E /* AccountVC.swift */; };
 		F6237EB025FFEF49004C9C7E /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6237EAF25FFEF49004C9C7E /* LocationVC.swift */; };
 		F6237EB325FFF077004C9C7E /* MoreLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6237EB225FFF077004C9C7E /* MoreLocationCell.swift */; };
+		F62EA67726316FBF00481AD8 /* ActivityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EA67626316FBF00481AD8 /* ActivityListCell.swift */; };
+		F63EFA4B263015DF003C6C35 /* ActivitiesRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63EFA4A263015DF003C6C35 /* ActivitiesRegistration.swift */; };
 		F645BC9226049E36006D93A0 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F645BC9126049E36006D93A0 /* SQLite.framework */; };
 		F645BC9726049E82006D93A0 /* SqlLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F645BC9626049E82006D93A0 /* SqlLite.swift */; };
 		F6663748260898E2006A6DC8 /* EditAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6663747260898E2006A6DC8 /* EditAccountVC.swift */; };
@@ -85,6 +87,8 @@
 		F6237EAC25FFEF1D004C9C7E /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		F6237EAF25FFEF49004C9C7E /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		F6237EB225FFF077004C9C7E /* MoreLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLocationCell.swift; sourceTree = "<group>"; };
+		F62EA67626316FBF00481AD8 /* ActivityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListCell.swift; sourceTree = "<group>"; };
+		F63EFA4A263015DF003C6C35 /* ActivitiesRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesRegistration.swift; sourceTree = "<group>"; };
 		F645BC9126049E36006D93A0 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		F645BC9626049E82006D93A0 /* SqlLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqlLite.swift; sourceTree = "<group>"; };
 		F6663747260898E2006A6DC8 /* EditAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountVC.swift; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 				F6237EA525FF83BD004C9C7E /* LocationCell.swift */,
 				F6237EB225FFF077004C9C7E /* MoreLocationCell.swift */,
 				F6D6F380260A5AE700EBE81D /* CalendarCollectionViewCell.swift */,
+				F62EA67626316FBF00481AD8 /* ActivityListCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				F6237E9725FF5A65004C9C7E /* Location.swift */,
 				F67821A82603F3D700D9EAB9 /* Activities.swift */,
 				F6FAAA652608D3640099761F /* TODO.swift */,
+				F63EFA4A263015DF003C6C35 /* ActivitiesRegistration.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				F6237E9525FF5874004C9C7E /* User.swift in Sources */,
 				F6237E6D25FE80A0004C9C7E /* tableViewHelper.swift in Sources */,
 				F6237E7925FE87C9004C9C7E /* ViewController.swift in Sources */,
+				F63EFA4B263015DF003C6C35 /* ActivitiesRegistration.swift in Sources */,
 				F6237EAA25FFAE5F004C9C7E /* ActivityDetailsVC.swift in Sources */,
 				F6FAAB412609FC4C0099761F /* Observable+RX.swift in Sources */,
 				F6FAAB4E2609FD680099761F /* UIImgeHelper.swift in Sources */,
@@ -424,6 +431,7 @@
 				F681079925F7F503007F3105 /* SceneDelegate.swift in Sources */,
 				F6FAAB482609FCAB0099761F /* Driver+RX.swift in Sources */,
 				F6FAAB4B2609FD010099761F /* NSObject+RX.swift in Sources */,
+				F62EA67726316FBF00481AD8 /* ActivityListCell.swift in Sources */,
 				F6F021612603F132009DFD8E /* programele.xcdatamodeld in Sources */,
 				F6D6F37E260A2EDF00EBE81D /* ActivitiesList.swift in Sources */,
 				F67821A92603F3D700D9EAB9 /* Activities.swift in Sources */,

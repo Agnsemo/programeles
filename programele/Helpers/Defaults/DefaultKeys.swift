@@ -12,6 +12,7 @@ extension DefaultsKeys {
     var user:             DefaultsKey<User?>   { .init("user") }
     var location:         DefaultsKey<Location?> {.init("location")}
     var profilePicture:            DefaultsKey<UIImage?> {.init("profilePicture")}
+    var registration:    DefaultsKey<[ActivitiesRegistration]?> {.init("registration")}
 }
 
 

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import SwiftyUserDefaults
 
 final class RegistrationVC: UIViewController {
 
@@ -13,17 +16,31 @@ final class RegistrationVC: UIViewController {
     @IBOutlet private var activityName: UILabel!
     @IBOutlet private var datePicker: UIDatePicker!
     @IBOutlet private var scrollView: UIScrollView!
-    @IBOutlet private var okButton: UIButton!
+    @IBOutlet private var okButton: LoadingButton!
     
-    var activity: String!
+    var activity: Activities!
+    var isLoading = BehaviorRelay<Bool>(value: false)
+    var isLoadingDriver: Driver<Bool> {
+        return isLoading.asDriver()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateRegistration()
         setupDatePicker()
-        activityName.text = activity
+        activityName.text = activity.title
         mainView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         keyboardAdjust(scrollView)
+        
+        okButton.rx.tapDriver
+            .driveNext(self, RegistrationVC.saveDate)
+        
+        print("ASD", isLoading.value)
+        
+        isLoadingDriver
+            .drive(okButton.rx.isLoading)
+            .disposed(by: rx.disposeBag)
         
     }
     
@@ -33,5 +50,14 @@ final class RegistrationVC: UIViewController {
         datePicker.minimumDate = Date()
         datePicker.maximumDate = Calendar.current.date(byAdding: .month, value: 1, to: Date())
         
+    }
+    
+    private func saveDate() {
+        isLoading.accept(true)
+        let date = datePicker.date
+        activitiesRegistrationArray.append(ActivitiesRegistration(name: activity.title, date: date))
+        activitiesRegistrationRelay.accept(activitiesRegistrationArray)
+        Defaults.registration = activitiesRegistrationArray
+        popToRootVC()
     }
 }

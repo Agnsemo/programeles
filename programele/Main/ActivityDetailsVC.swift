@@ -35,10 +35,10 @@ final class ActivityDetailsVC: UIViewController {
     }
     
     private func openRegistrationVC() {
-        performSegue(withIdentifier: "RegistrationVC", sender: activity.title)
+        performSegue(withIdentifier: "RegistrationVC", sender: activity)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        (segue.destination as? RegistrationVC)?.activity = sender as? String
+        (segue.destination as? RegistrationVC)?.activity = sender as? Activities
     }
 }
