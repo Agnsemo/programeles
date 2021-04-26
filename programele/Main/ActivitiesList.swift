@@ -12,12 +12,15 @@ import SwiftyUserDefaults
 
 final class ActivitiesList: UIViewController {
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var mainView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateRegistration()
+        tableView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
+        mainView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         
         activitiesRegistrationDriver
             .asObservable()

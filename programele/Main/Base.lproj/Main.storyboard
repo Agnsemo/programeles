@@ -45,10 +45,10 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RsT-oA-Ucv">
                                 <rect key="frame" x="0.0" y="188" width="414" height="674"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" systemColor="systemGray5Color"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityListCell" rowHeight="70" id="Opu-zt-hSt" customClass="ActivityListCell" customModule="programele" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityListCell" rowHeight="70" id="Opu-zt-hSt" customClass="ActivityListCell" customModule="programele" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Opu-zt-hSt" id="PUz-BX-JEJ">
@@ -80,6 +80,7 @@
                                                 <constraint firstItem="N4e-PE-Mqt" firstAttribute="leading" secondItem="PUz-BX-JEJ" secondAttribute="leadingMargin" constant="10" id="zEz-uW-0Nh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="cue-yj-Wfk" id="ehB-dY-jTm"/>
                                             <outlet property="nameLabel" destination="xwP-Ib-I2S" id="M5q-3h-bDK"/>
@@ -97,7 +98,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="1nm-t0-GDa" firstAttribute="top" secondItem="yWn-oW-wSf" secondAttribute="top" constant="10" id="2gy-SY-LJO"/>
                                     <constraint firstAttribute="bottom" secondItem="1nm-t0-GDa" secondAttribute="bottom" constant="10" id="GhL-wA-c2h"/>
@@ -121,6 +122,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JyR-p0-Jue"/>
                     <connections>
+                        <outlet property="mainView" destination="yWn-oW-wSf" id="xyO-uW-gdg"/>
                         <outlet property="tableView" destination="RsT-oA-Ucv" id="AeX-mK-fxC"/>
                     </connections>
                 </viewController>
