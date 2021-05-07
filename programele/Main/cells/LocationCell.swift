@@ -15,7 +15,7 @@ final class LocationCell: UITableViewCell {
     @IBOutlet var clubWorkingHoursLabel: UILabel!
     
     func setup(location: Location) {
-        clubNameLabel.text = location.name
+        clubNameLabel.text = location.name + ", " + location.city
         clubWorkingHoursLabel.text = location.workHours.uppercased()
     }
     

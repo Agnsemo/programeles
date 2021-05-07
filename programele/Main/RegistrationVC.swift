@@ -17,6 +17,7 @@ final class RegistrationVC: UIViewController {
     @IBOutlet private var datePicker: UIDatePicker!
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var okButton: LoadingButton!
+    @IBOutlet private var timeLabel: UILabel!
     
     var activity: Activities!
     var isLoading = BehaviorRelay<Bool>(value: false)
@@ -42,6 +43,8 @@ final class RegistrationVC: UIViewController {
             .drive(okButton.rx.isLoading)
             .disposed(by: rx.disposeBag)
         
+        timeLabel.text = activity.time
+        
     }
     
     private func setupDatePicker() {
@@ -55,7 +58,7 @@ final class RegistrationVC: UIViewController {
     private func saveDate() {
         isLoading.accept(true)
         let date = datePicker.date
-        activitiesRegistrationArray.append(ActivitiesRegistration(name: activity.title, date: date))
+        activitiesRegistrationArray.append(ActivitiesRegistration(name: activity.title, date: date, time: activity.time))
         activitiesRegistrationRelay.accept(activitiesRegistrationArray)
         Defaults.registration = activitiesRegistrationArray
         popToRootVC()

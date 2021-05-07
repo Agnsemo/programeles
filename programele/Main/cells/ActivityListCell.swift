@@ -11,10 +11,12 @@ final class ActivityListCell: UITableViewCell {
 
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
+    @IBOutlet private var timeLabel: UILabel!
     
     func setup(activities: ActivitiesRegistration) {
         nameLabel.text = activities.name
         dateLabel.text = activities.date.convertToString
+        timeLabel.text = activities.time
     }
 }
 

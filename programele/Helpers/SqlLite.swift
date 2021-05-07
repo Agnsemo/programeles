@@ -42,7 +42,7 @@ class DBHelper
     
     //ACTIVITIES
     func createActivitiesTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS activities(id INTEGER PRIMARY KEY,title TEXT,description TEXT, image TEXT);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS activities(id INTEGER PRIMARY KEY,title TEXT,description TEXT, image TEXT, time TEXT);"
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
         {
@@ -59,7 +59,7 @@ class DBHelper
     }
     
     
-    func insertActivities(id: Int, title: String, description: String, image: String)
+    func insertActivities(id: Int, title: String, description: String, image: String, time: String)
     {
         let activities = readActivities()
         for a in activities
@@ -69,13 +69,14 @@ class DBHelper
                 return
             }
         }
-        let insertStatementString = "INSERT INTO activities(id, title, description, image) VALUES (?, ?, ?, ?);"
+        let insertStatementString = "INSERT INTO activities(id, title, description, image, time) VALUES (?, ?, ?, ?,?);"
         var insertStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             sqlite3_bind_int(insertStatement, 1, Int32(id))
             sqlite3_bind_text(insertStatement, 2, (title as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 3, (description as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 4, (image as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 5, (time as NSString).utf8String, -1, nil)
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row.")
@@ -98,7 +99,8 @@ class DBHelper
                 let title = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
                 let description = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
                 let image = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
-                psns.append(Activities(id: Int(id), title: title, description: description, image: image))
+                let time = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
+                psns.append(Activities(id: Int(id), title: title, description: description, image: image, time: time))
                 print("Query Result:")
                 print("\(id) | \(title) | \(description)")
             }

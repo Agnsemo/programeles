@@ -11,4 +11,5 @@ import SwiftyUserDefaults
 struct ActivitiesRegistration: Codable, DefaultsSerializable {
     let name: String
     let date: Date
+    let time: String
 }

@@ -22,6 +22,12 @@ final class ActivitiesList: UIViewController {
         tableView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         mainView.backgroundColor = UIColor.appPurple.withAlphaComponent(0.2)
         
+//        Observable.just(models)
+//            .map {
+//                $0.filter{ $0.name == name }
+//            }.bind(to: modelsBehaviourRelay)
+//            .disposed(by: disposeBag)
+        
         activitiesRegistrationDriver
             .asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: "ActivityListCell", cellType: ActivityListCell.self)) { (row, item, cell) in
