@@ -56,7 +56,6 @@
 		F6F020C626014748009DFD8E /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F020C526014748009DFD8E /* DefaultKeys.swift */; };
 		F6F020CA26014B3D009DFD8E /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F020C926014B3D009DFD8E /* SwiftyUserDefaults.framework */; };
 		F6F020CE26014C56009DFD8E /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F020CD26014C56009DFD8E /* KeychainAccess.framework */; };
-		F6F021612603F132009DFD8E /* programele.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6F0215F2603F132009DFD8E /* programele.xcdatamodeld */; };
 		F6FAAA662608D3640099761F /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FAAA652608D3640099761F /* TODO.swift */; };
 		F6FAAB412609FC4C0099761F /* Observable+RX.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FAAB402609FC4C0099761F /* Observable+RX.swift */; };
 		F6FAAB442609FC790099761F /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FAAB432609FC790099761F /* HasDisposeBag.swift */; };
@@ -124,7 +123,6 @@
 		F6F020C526014748009DFD8E /* DefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeys.swift; sourceTree = "<group>"; };
 		F6F020C926014B3D009DFD8E /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/iOS/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
 		F6F020CD26014C56009DFD8E /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
-		F6F021602603F132009DFD8E /* programele.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = programele.xcdatamodel; sourceTree = "<group>"; };
 		F6FAAA652608D3640099761F /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 		F6FAAB402609FC4C0099761F /* Observable+RX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+RX.swift"; sourceTree = "<group>"; };
 		F6FAAB432609FC790099761F /* HasDisposeBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				F6237E8D25FF50B9004C9C7E /* Activities.xcassets */,
 				F68107A125F7F505007F3105 /* LaunchScreen.storyboard */,
 				F68107A425F7F505007F3105 /* Info.plist */,
-				F6F0215F2603F132009DFD8E /* programele.xcdatamodeld */,
 			);
 			path = programele;
 			sourceTree = "<group>";
@@ -432,7 +429,6 @@
 				F6FAAB482609FCAB0099761F /* Driver+RX.swift in Sources */,
 				F6FAAB4B2609FD010099761F /* NSObject+RX.swift in Sources */,
 				F62EA67726316FBF00481AD8 /* ActivityListCell.swift in Sources */,
-				F6F021612603F132009DFD8E /* programele.xcdatamodeld in Sources */,
 				F6D6F37E260A2EDF00EBE81D /* ActivitiesList.swift in Sources */,
 				F67821A92603F3D700D9EAB9 /* Activities.swift in Sources */,
 				F6237EAD25FFEF1D004C9C7E /* AccountVC.swift in Sources */,
@@ -652,19 +648,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F6F0215F2603F132009DFD8E /* programele.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F6F021602603F132009DFD8E /* programele.xcdatamodel */,
-			);
-			currentVersion = F6F021602603F132009DFD8E /* programele.xcdatamodel */;
-			path = programele.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F681078B25F7F503007F3105 /* Project object */;
 }
